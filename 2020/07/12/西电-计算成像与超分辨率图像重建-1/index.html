@@ -14,10 +14,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="主要内容：（1）计算成像与超分辨率成像技术 （2）Coded Exposure  （3）Coded Aperture  （4）压缩编码孔径与超分辨率成像 （5）随机散射超分辨率成像技术 （6）量子成像 先介绍了光电成像的一般描述：g（x,y）&#x3D;f(x,y) * h(x,y)+n(x,y)其中，f是原图，h是传递函数，n是噪声，* 是卷积也叫图像的退化模型，图像退化的主要原因：离焦，运动模糊，几何失">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/images/pasted-9.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-10.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-11.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-12.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-13.png">
 <meta property="article:published_time" content="2020-07-12T08:53:43.000Z">
-<meta property="article:modified_time" content="2020-07-12T09:38:20.881Z">
+<meta property="article:modified_time" content="2020-07-12T12:44:41.617Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-9.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -97,6 +103,10 @@
 <p>先介绍了光电成像的一般描述：<br>g（x,y）=f(x,y) * h(x,y)+n(x,y)<br>其中，f是原图，h是传递函数，n是噪声，* 是卷积<br>也叫图像的退化模型，图像退化的主要原因：离焦，运动模糊，几何失真和噪声。</p>
 <p>图像恢复（和图像重建是同以概念）：明确图像退化的原因，建立数学模型，沿逆过程恢复图像。其实就是上面公式求h函数的过程。一般存在一个准则，要误差最小一般用数学上的lp范数。图像恢复的难点：数学模型和噪声。</p>
 <p>超分辨率成像主要包括：<br>1）利用低分辨率图像重建成高分辨率图像；<br>2) 利用低分辨率的sensor重建为高分辨率的；<br>在超分辨率成像涉及的abbe成像原理（即二次衍射理论）</p>
+<p><img src="/images/pasted-9.png" alt="upload successful"><br>显微极限 200nm，很多做超分辨率成像就是突破200nm，有随机介质的方式突破。<br>阿贝原理提出显微镜的分辨率和光的波长，显微镜的物镜孔径的关系时。</p>
+<h4 id="计算成像和图像重建的关系"><a href="#计算成像和图像重建的关系" class="headerlink" title="计算成像和图像重建的关系"></a>计算成像和图像重建的关系</h4><p><img src="/images/pasted-10.png" alt="upload successful"></p>
+<p><img src="/images/pasted-11.png" alt="upload successful"></p>
+<h6 id="编码曝光"><a href="#编码曝光" class="headerlink" title="编码曝光"></a>编码曝光</h6><p><img src="/images/pasted-12.png" alt="upload successful"><br>这幅图是传统拍摄时候的情况：输入的照片卷积上曝光的时间（相当于一个矩形的路北区）这样输出的PSF是一个sinc function 函数，它与x轴有交点就会导致输出的图像模糊。所以其中一种改进就是将与x轴的交点消除掉，这就是所谓的编码曝光。<br><img src="/images/pasted-13.png" alt="upload successful"><br>如上图，通过编码的方式将快门的曝光时间改变，缩小，这样输入图像的PSF图像就变成了Broadband Function 与x轴没有交点了。</p>
 
       
     </div>
