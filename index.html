@@ -100,7 +100,8 @@
 <p><img src="/images/pasted-11.png" alt="upload successful"></p>
 <h6 id="编码曝光"><a href="#编码曝光" class="headerlink" title="编码曝光"></a>编码曝光</h6><p><img src="/images/pasted-12.png" alt="upload successful"><br>这幅图是传统拍摄时运动模糊产生的原因：运动的小车卷积上曝光(快门)的时间（相当于一个盒子滤波器）得到一个模糊的图像。<br>h()的PSF（点扩散函数）是一个sinc function 函数，它与x轴有交点，这样我们在逆卷积的时候就有除零的情况从而图像恢复就会存在大量的噪声得不到正确的信号，从而去模糊的情况很难。<br>其实用信号系统就好了，输入卷积上冲击相应等于气响应。PSF就相当于脉冲响应的频域。<br>所以其中一种改进就是将与x轴的交点消除掉，这就是所谓的编码曝光。</p>
 <p><img src="/images/pasted-13.png" alt="upload successful"><br>如上图，通过编码的方式将快门的曝光时间改变，这样PSF和就没有零值，容易完成去模糊得到正确的图像。</p>
-<h6 id="编码孔径"><a href="#编码孔径" class="headerlink" title="编码孔径"></a>编码孔径</h6>
+<h6 id="编码孔径"><a href="#编码孔径" class="headerlink" title="编码孔径"></a>编码孔径</h6><p>改变镜头的孔径</p>
+
       
     </div>
     <footer class="article-footer">
@@ -128,7 +129,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/29/ML-handwriting-recognition/">ML</a>
+      <a class="article-title" href="/2020/06/29/ML-handwriting-recognition/">ML-Handwriting Recognition</a>
     </h1>
   
 
@@ -308,7 +309,7 @@
           </li>
         
           <li>
-            <a href="/2020/06/29/ML-handwriting-recognition/">ML</a>
+            <a href="/2020/06/29/ML-handwriting-recognition/">ML-Handwriting Recognition</a>
           </li>
         
           <li>
