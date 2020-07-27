@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Handwriting recognition这是在学习使用pytorch以torchvision的MNNIST数据集进行的手写体数字识别，主要目的是记录一些函数的使用方法。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ML-Handwriting Recognition">
+<meta property="og:url" content="http://yoursite.com/2020/06/29/ML-handwriting-recognition/index.html">
+<meta property="og:site_name" content="吃吃锅巴">
+<meta property="og:description" content="Handwriting recognition这是在学习使用pytorch以torchvision的MNNIST数据集进行的手写体数字识别，主要目的是记录一些函数的使用方法。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-29T14:42:00.000Z">
+<meta property="article:modified_time" content="2020-07-23T10:41:39.802Z">
+<meta property="article:author" content="Zzlw">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/29/ML-handwriting-recognition/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ML-Handwriting Recognition | 吃吃锅巴</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">吃吃锅巴</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/ML-handwriting-recognition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zzlw">
+      <meta itemprop="description" content="被上天选中，成为一事无成的小朋友">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吃吃锅巴">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ML-Handwriting Recognition
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-29 22:42:00" itemprop="dateCreated datePublished" datetime="2020-06-29T22:42:00+08:00">2020-06-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-23 18:41:39" itemprop="dateModified" datetime="2020-07-23T18:41:39+08:00">2020-07-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="Handwriting-recognition"><a href="#Handwriting-recognition" class="headerlink" title="Handwriting recognition"></a>Handwriting recognition</h4><p>这是在学习使用pytorch以torchvision的MNNIST数据集进行的手写体数字识别，主要目的是记录一些函数的使用方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">from torch.utils.data import  DataLoader</span><br><span class="line">from torchvision import datasets</span><br><span class="line">from torchvision import transforms</span><br><span class="line"><span class="comment">#  the above three for constructing Dataloader</span></span><br><span class="line">import torch.nn.functional as F     <span class="comment"># for using activate function</span></span><br><span class="line">import torch.optim as optim         <span class="comment">#for constructing optimizer</span></span><br><span class="line"></span><br><span class="line"><span class="string">''</span><span class="string">'  torchvisions 是pytorch的图形库，有以下四个构成</span></span><br><span class="line"><span class="string">        torchvision.datasets: 一些加载数据的函数及常用的数据集接口；</span></span><br><span class="line"><span class="string">        torchvision.models: 包含常用的模型结构（含预训练模型），例如AlexNet、VGG、ResNet等；</span></span><br><span class="line"><span class="string">        torchvision.transforms: 常用的图片变换，例如裁剪、旋转等；</span></span><br><span class="line"><span class="string">        torchvision.utils: 其他的一些有用的方法</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line"><span class="comment">#part1: prepare dataset</span></span><br><span class="line">batch_size = 64</span><br><span class="line"></span><br><span class="line">transform = transforms.Compose([transforms.ToTensor(),transforms.Normalize((0.1307, ), (0.3081, ))])</span><br><span class="line"><span class="string">''</span><span class="string">' transforms.compose()是一个类，主要主要作用是串联多个图片的操作，compose（）类会将transforms列表里面的transform操作进行遍历，上行代码[]里面有两个对图片的操作</span></span><br><span class="line"><span class="string">    transforms.Totensor 将下载下来的图片（PILimage）转化成tensor ,W×H×C➡C×W×H,[0,256]➡[0,1]</span></span><br><span class="line"><span class="string">    transforms.Normize 进行数据的归一化  前一个数字是mean，后一个是std 是经验值</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">train_dataset = datasets.MNIST(root=<span class="string">'../dataset/mnist/'</span>,train=True,download=True,transform=transform)</span><br><span class="line">train_loader = DataLoader(train_dataset,shuffle=True,batch_size=batch_size)</span><br><span class="line">test_dataset = datasets.MNIST(root=<span class="string">'../dataset/mnist/'</span>,train=False,download=True,transform=transform)</span><br><span class="line">test_loader = DataLoader(test_dataset,shuffle=False,batch_size=batch_size)</span><br><span class="line"><span class="comment">#因为这里使用的是torhvision的datasets 里面的MNIST数据集， 使用可以直接这样Dataloader  而不是像之前的那样先构建Dataset再做Dataloader</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#part2: design model</span></span><br><span class="line">class Net(torch.nn.Module):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        super(Net, self).__init__()</span><br><span class="line">        self.conv1 = torch.nn.Conv2d(1, 10, kernel_size=5)  <span class="comment">#Torch.nn.Linear(in_feature,out_feature,bias)</span></span><br><span class="line">        self.conv2 = torch.nn.Conv2d(10, 20, kernel_size=5)</span><br><span class="line">        self.pooling = torch.nn.MaxPool2d(2)</span><br><span class="line">        self.fc = torch.nn.Linear(320,10)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def forward(self, x):</span><br><span class="line">        batch_size = x.size(0)</span><br><span class="line">        x = F.relu(self.pooling(self.conv1(x)))</span><br><span class="line">        x = F.relu(self.pooling(self.conv2(x)))</span><br><span class="line">        x = x.view(batch_size, -1)</span><br><span class="line">        x = self.fc(x)</span><br><span class="line">        <span class="built_in">return</span> x</span><br><span class="line"><span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">      x.view(a，b)是对数据进行形变 转化为a行，b列，这里如果由一个数是-1，表示 的是让电脑帮我们算这个a或者b是多少，而不是-1行，列的意思</span></span><br><span class="line"><span class="string">      view形变后返回的数据和传入的tensor一样，只是形状不同；view()返回的tensor和传入的tensor共享内存，意思就是修改其中一个，数据都会变；</span></span><br><span class="line"><span class="string">      例如：</span></span><br><span class="line"><span class="string">         x.view(4,5).shape       #输出为(4,5)</span></span><br><span class="line"><span class="string">         x.view(-1,5).shape      #输出为(4,5)</span></span><br><span class="line"><span class="string">         x.view(4,-1).shape      #输出为(4,5)</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line">model = Net()</span><br><span class="line"></span><br><span class="line"><span class="comment">#part3: construct loss and optimizer</span></span><br><span class="line">criterion = torch.nn.CrossEntropyLoss(size_average=False)   <span class="comment">#这里的CrossEntropyLOSS不仅由Crossentropy还有还有输出层后面应该加的激活</span></span><br><span class="line">optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.5)</span><br><span class="line"></span><br><span class="line"><span class="comment">#part4: training cycle</span></span><br><span class="line"></span><br><span class="line">def train(epoch):</span><br><span class="line">    running_loss = 0.0</span><br><span class="line">    <span class="keyword">for</span> batch_idx, data <span class="keyword">in</span> enumerate(train_loader, 0):</span><br><span class="line"></span><br><span class="line">        inputs, target = data</span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line"></span><br><span class="line">        outputs = model(inputs)</span><br><span class="line">        loss = criterion(outputs , target)</span><br><span class="line"></span><br><span class="line">        loss.backward()</span><br><span class="line">        optimizer.step()</span><br><span class="line">        running_loss += loss.item()</span><br><span class="line">        <span class="keyword">if</span> batch_idx % 300 ==299:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">'[%d, %5d] loss: %.3f'</span> % (epoch + 1, batch_idx + 1, running_loss / 2000))</span><br><span class="line">            running_loss = 0.0</span><br><span class="line"></span><br><span class="line">def <span class="built_in">test</span>():</span><br><span class="line">    correct = 0  <span class="comment">#用来计算正确了多少</span></span><br><span class="line">    total = 0   <span class="comment">#计算总数的多少</span></span><br><span class="line">    with torch.no_grad():     <span class="comment">#在这个with里面是不算梯度的</span></span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> test_loader:</span><br><span class="line">            inputs, target = data</span><br><span class="line">            outputs = model(inputs)   <span class="comment">#这个输出是一个矩阵一行里面有十个概率使用我们要取出最大的那个概率的下标</span></span><br><span class="line">            _, predicted = torch.max (outputs.data, dim = 1)</span><br><span class="line">            <span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">                output = torch.max(input, dim)  </span></span><br><span class="line"><span class="string">                其中input是输入的有一个tensor ，dim是max函数引索的维度 有0/1 ，其0表示每列的最大值，1表示每行的最大值</span></span><br><span class="line"><span class="string">                max函数返回值有两个tensor ，第一个是最大值，第二个是这个最大值的下标是多少</span></span><br><span class="line"><span class="string">                    </span></span><br><span class="line"><span class="string">            '</span><span class="string">''</span></span><br><span class="line">            total += target.size(0)</span><br><span class="line"></span><br><span class="line">            <span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">                labels.size(0)  labels是N×1的的矩阵 所以它的size就是一个元组（N,1）其中size（0）表示拿出第一个元素N，所以就是labels的总数 </span></span><br><span class="line"><span class="string">            '</span><span class="string">''</span></span><br><span class="line">            correct += (predicted == target).sum().item()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'Accuracy on test set: %d %% [%d/%d]'</span> % (100 * correct / total, correct, total))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(10):</span><br><span class="line">        train(epoch)</span><br><span class="line">        <span class="built_in">test</span>()</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/29/computational-image-learn/" rel="prev" title="计算成像的学习记录">
+      <i class="fa fa-chevron-left"></i> 计算成像的学习记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/12/%E8%A5%BF%E7%94%B5-%E8%AE%A1%E7%AE%97%E6%88%90%E5%83%8F%E4%B8%8E%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA-1/" rel="next" title="西电-计算成像与超分辨率图像重建">
+      西电-计算成像与超分辨率图像重建 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Handwriting-recognition"><span class="nav-number">1.</span> <span class="nav-text">Handwriting recognition</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zzlw"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Zzlw</p>
+  <div class="site-description" itemprop="description">被上天选中，成为一事无成的小朋友</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zzlw</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
