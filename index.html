@@ -148,6 +148,71 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/29/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zzlw">
+      <meta itemprop="description" content="被上天选中，成为一事无成的小朋友">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吃吃锅巴">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/29/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-29 15:55:43" itemprop="dateCreated datePublished" datetime="2020-07-29T15:55:43+08:00">2020-07-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/29/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/27/ML/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -238,7 +303,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-25 18:10:13" itemprop="dateModified" datetime="2020-07-25T18:10:13+08:00">2020-07-25</time>
+                <time title="修改时间：2020-07-29 15:55:02" itemprop="dateModified" datetime="2020-07-29T15:55:02+08:00">2020-07-29</time>
               </span>
 
           
@@ -252,32 +317,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="一些零零碎碎的函数"><a href="#一些零零碎碎的函数" class="headerlink" title="一些零零碎碎的函数"></a>一些零零碎碎的函数</h3><p>记录一些在学习ML过程中使用到的一些函数，主要是二次记忆吧。</p>
-<h4 id="pandas-的一些函数"><a href="#pandas-的一些函数" class="headerlink" title="pandas 的一些函数"></a>pandas 的一些函数</h4><h6 id="pandas-导入数据的函数"><a href="#pandas-导入数据的函数" class="headerlink" title="pandas 导入数据的函数"></a>pandas 导入数据的函数</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  pd.read_csv(filepath = .., sep = ,  header = 0/None, encoding = <span class="string">'big5'</span>)   <span class="comment">#从CSV文件导入数据</span></span><br></pre></td></tr></table></figure>
-<p>这个函数有很多个参数，具体的可以使用的时候查查：<br>csv文件相当是相当于excel的文件，CSV文件默认以英文逗号做为列分隔符，换行符作为行分隔符。<br>filepath_or_buffer：csv文件的路径<br>sep:分隔符是什么，默认是逗号<br>header：默认是0，则读入的读一行会没了；等于None的话，第一行保留<br>encoding：编码的方式</p>
-<p>此外导入数据的还要以下函数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pd.read_table(filepath)   <span class="comment">#从文本文件导入数据</span></span><br><span class="line">pd.read_excel(filepath)   <span class="comment">#从excel文件导入数据  </span></span><br><span class="line">pd.read_sql(query, connection_object)：从SQL表/库导入数据</span><br><span class="line">pd.read_json(json_string)：从JSON格式的字符串导入数据</span><br><span class="line">pd.read_html(url)：解析URL、字符串或者HTML文件，抽取其中的tables表格</span><br><span class="line">pd.read_clipboard()：从你的粘贴板获取内容，并传给read_table()</span><br><span class="line">pd.DataFrame(dict)：从字典对象导入数据，Key是列名，Value是数据</span><br></pre></td></tr></table></figure>
-<p>这些导入数据的函数，参数都是类似的。记着read_csv()的就好了</p>
-<h6 id="pandas-数据选取的函数"><a href="#pandas-数据选取的函数" class="headerlink" title="pandas 数据选取的函数"></a>pandas 数据选取的函数</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ df.iloc(：，：)         <span class="comment">#通过行列的下表来选取数据</span></span><br><span class="line">以下是用法的示范：</span><br><span class="line">df.iloc(: , 3:)  		 <span class="comment">#所以的行都取处，列从第3列开始取，第0，1，2列不要</span></span><br><span class="line">df.iloc(0)       		 <span class="comment">#取第0行的所以数据，但是是以一列的形式输出的</span></span><br><span class="line">df.iloc(：，[0 ,1])	   <span class="comment">#取出第0，1列的数据</span></span><br><span class="line"></span><br><span class="line">$ df.loc(：，：)          <span class="comment">#通过行列的名来选取数据，用法和iloc()类似</span></span><br><span class="line">具体使用参见这个帖子，很详细了。</span><br><span class="line">https://blog.csdn.net/Wanna_y/article/details/101772018</span><br></pre></td></tr></table></figure>
-<h4 id="numpy中的一些函数"><a href="#numpy中的一些函数" class="headerlink" title="numpy中的一些函数"></a>numpy中的一些函数</h4><h6 id="创建类函数"><a href="#创建类函数" class="headerlink" title="创建类函数"></a>创建类函数</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ np.empty(shape, [dtype=<span class="built_in">float</span>, order=<span class="string">'C'</span>])   <span class="comment">#[]内表示可以省略</span></span><br><span class="line">$ x = np.empty([4,5])   <span class="comment">#表示创建一个四行五列的数组</span></span><br></pre></td></tr></table></figure>
-<p>np.empty()函数依据shape创建一个数组，一共有三个参数：<br>shape  用来指定返回数组的大小<br>dtype  数组元素的类型，默认值是float64<br>order  是否以内存中的C或Fortran连续（行或列）顺序存储多维数据（一般不用）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ np.zeros(shape, [dtype=<span class="built_in">float</span>, order=<span class="string">'C'</span>])   <span class="comment">#依据shape创建一个全零的数组</span></span><br><span class="line">$ np.ones(shape, [dtype=<span class="built_in">float</span>, order=<span class="string">'C'</span>])   <span class="comment">#依据shape创建一个全一的数组</span></span><br><span class="line">参数和empty()类似</span><br></pre></td></tr></table></figure>
-
-
-<p>np.array()和np.mat()区别<br>mat可以从字符串或列表中生成；array只能从列表中生成</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = np.mat([[3,5,6],[1,2,3]])</span><br><span class="line">b = np.mat(<span class="string">"1,2,3;2,3,4"</span>)</span><br><span class="line"><span class="built_in">print</span>(a)  <span class="comment">#输出[[3 5 6]</span></span><br><span class="line">           [1 2 3]]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment">#输出[[1 2 3]</span></span><br><span class="line">           [2 3 4]]</span><br></pre></td></tr></table></figure>
-<p>生成的数组计算方式不同<br>array生成数组，用np.dot()表示矩阵乘积，* 号或np.multiply()表示点乘<br>mat生成数组，* 和np.dot()相同，点乘只能用np.multiply()</p>
-<p>有关np.random.seed(0)和 np.random.randn(d0,d1,…,dn)<br>前者括号内的数是什么都可以的，只要设的相同然后用后者生成的矩阵都是相同的。<br>rand函数根据给定维度生成 0,1之间的数据，包含0，不包含1<br>dn表格每个维回值为指定维度的array<br>例如:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(0)</span><br><span class="line">a = np.random.rand(4,3,2) <span class="comment"># shape: 4*3*2</span></span><br><span class="line"></span><br><span class="line">np.random.seed(0)</span><br><span class="line">b =  = np.random.rand(4,3,2)    </span><br><span class="line">a 和 b的数是相同的</span><br></pre></td></tr></table></figure>
-
-<h5 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ np.abs(x)、np.fabs(x) ： 计算数组各元素的绝对值</span><br><span class="line">$ np.sqrt(x) ： 计算数组各元素的平方根</span><br><span class="line">$ np.square(x) ： 计算数组各元素的平方</span><br><span class="line">$ np.log(x) 、np.log10(x)、np.log2(x) ： 计算数组各元素的自然对数、10底对数和2底对数</span><br><span class="line">$ np.ceil(x) 、np.floor(x) ： 计算数组各元素的ceiling值或floor值</span><br><span class="line"></span><br><span class="line">$ np.mean()函数功能：求取均值</span><br><span class="line">经常操作的参数为axis，以m * n矩阵举例：</span><br><span class="line"></span><br><span class="line">axis 不设置值，对 m*n 个数求均值，返回一个实数</span><br><span class="line">axis = 0：压缩行，对各列求均值，返回 1* n 矩阵</span><br><span class="line">axis =1 ：压缩列，对各行求均值，返回 m *1 矩阵</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h3 id="python-中的函数"><a href="#python-中的函数" class="headerlink" title="python 中的函数"></a>python 中的函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ line.split(str=<span class="string">""</span>, num=string.count(str))</span><br><span class="line"></span><br><span class="line"> txt = <span class="string">"Google#Runoob#Taobao#Facebook"</span></span><br><span class="line"> x = txt.split(<span class="string">"#"</span>, 1)</span><br><span class="line"> <span class="built_in">print</span> x  <span class="comment">#输出['Google', 'Runoob#Taobao#Facebook']</span></span><br></pre></td></tr></table></figure>
-<p>str：指定以什么为分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等。<br>num：分割次数。默认为 -1, 即分隔所有。</p>
-
+          <h3 id="一些零零碎碎的函数"><a href="#一些零零碎碎的函数" class="headerlink" title="一些零零碎碎的函数"></a>一些零零碎碎的函数</h3><p>记录一些在学习ML过程中使用到的一些函数，主要是二次记忆吧。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/23/ML%E7%9A%84%E9%9B%B6%E9%9B%B6%E7%A2%8E%E7%A2%8E/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -327,7 +375,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-23 19:19:57" itemprop="dateModified" datetime="2020-07-23T19:19:57+08:00">2020-07-23</time>
+                <time title="修改时间：2020-07-29 15:55:14" itemprop="dateModified" datetime="2020-07-29T15:55:14+08:00">2020-07-29</time>
               </span>
 
           
@@ -346,17 +394,15 @@
 <p>（3）Coded Aperture </p>
 <p>（4）压缩编码孔径与超分辨率成像</p>
 <p>（5）随机散射超分辨率成像技术</p>
-<p>（6）量子成像</p>
-<p>先介绍了光电成像的一般描述，也称为图像的退化模型：<br>g（x,y）=f(x,y) * h(x,y)+n(x,y)<br>其中，f是原图，h是传递函数，n是噪声，* 是卷积<br>图像退化的主要原因：离焦，运动模糊，几何失真和噪声。</p>
-<p>图像恢复（和图像重建是同一概念）：明确图像退化的原因，建立数学模型，沿逆过程恢复图像。其实就是上面公式求h()函数的过程。<br>图像恢复需要遵守一个准则：与原图误差最小，一般用数学上的lp范数。图像恢复的难点：数学模型和噪声。</p>
-<p>超分辨率成像主要包括：<br>1）利用低分辨率图像重建成高分辨率图像；<br>2) 利用低分辨率的sensor成像高分辨率的图像；</p>
-<p>超分辨率成像涉及的abbe成像原理（即二次衍射理论）<br><img src="/images/pasted-14.png" alt="upload successful"><br>显微极限 200nm，很多做超分辨率成像就是突破200nm，有随机介质的方式突破。<br>阿贝原理提出显微镜的分辨率和光的波长，显微镜的物镜孔径的关系时。</p>
-<h5 id="计算成像和图像重建的关系"><a href="#计算成像和图像重建的关系" class="headerlink" title="计算成像和图像重建的关系"></a>计算成像和图像重建的关系</h5><p><img src="/images/pasted-10.png" alt="upload successful"></p>
-<p><img src="/images/pasted-11.png" alt="upload successful"></p>
-<h6 id="编码曝光"><a href="#编码曝光" class="headerlink" title="编码曝光"></a>编码曝光</h6><p><img src="/images/pasted-12.png" alt="upload successful"><br>这幅图是传统拍摄时运动模糊产生的原因：运动的小车卷积上曝光(快门)的时间（相当于一个盒子滤波器）得到一个模糊的图像。<br>h()的PSF（点扩散函数）是一个sinc function 函数，它与x轴有交点，这样我们在逆卷积的时候就有除零的情况从而图像恢复就会存在大量的噪声得不到正确的信号，从而去模糊的情况很难。<br>其实用信号系统就好了，输入卷积上冲击相应等于气响应。PSF就相当于脉冲响应的频域。<br>所以其中一种改进就是将与x轴的交点消除掉，这就是所谓的编码曝光。</p>
-<p><img src="/images/pasted-13.png" alt="upload successful"><br>如上图，通过编码的方式将快门的曝光时间改变，这样PSF和就没有零值，容易完成去模糊得到正确的图像。</p>
-<h6 id="编码孔径"><a href="#编码孔径" class="headerlink" title="编码孔径"></a>编码孔径</h6><p>改变镜头的孔径</p>
-
+<p>（6）量子成像<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/07/12/%E8%A5%BF%E7%94%B5-%E8%AE%A1%E7%AE%97%E6%88%90%E5%83%8F%E4%B8%8E%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA-1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -406,7 +452,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-23 18:41:39" itemprop="dateModified" datetime="2020-07-23T18:41:39+08:00">2020-07-23</time>
+                <time title="修改时间：2020-07-29 15:55:30" itemprop="dateModified" datetime="2020-07-29T15:55:30+08:00">2020-07-29</time>
               </span>
 
           
@@ -420,8 +466,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="Handwriting-recognition"><a href="#Handwriting-recognition" class="headerlink" title="Handwriting recognition"></a>Handwriting recognition</h4><p>这是在学习使用pytorch以torchvision的MNNIST数据集进行的手写体数字识别，主要目的是记录一些函数的使用方法。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">from torch.utils.data import  DataLoader</span><br><span class="line">from torchvision import datasets</span><br><span class="line">from torchvision import transforms</span><br><span class="line"><span class="comment">#  the above three for constructing Dataloader</span></span><br><span class="line">import torch.nn.functional as F     <span class="comment"># for using activate function</span></span><br><span class="line">import torch.optim as optim         <span class="comment">#for constructing optimizer</span></span><br><span class="line"></span><br><span class="line"><span class="string">''</span><span class="string">'  torchvisions 是pytorch的图形库，有以下四个构成</span></span><br><span class="line"><span class="string">        torchvision.datasets: 一些加载数据的函数及常用的数据集接口；</span></span><br><span class="line"><span class="string">        torchvision.models: 包含常用的模型结构（含预训练模型），例如AlexNet、VGG、ResNet等；</span></span><br><span class="line"><span class="string">        torchvision.transforms: 常用的图片变换，例如裁剪、旋转等；</span></span><br><span class="line"><span class="string">        torchvision.utils: 其他的一些有用的方法</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line"><span class="comment">#part1: prepare dataset</span></span><br><span class="line">batch_size = 64</span><br><span class="line"></span><br><span class="line">transform = transforms.Compose([transforms.ToTensor(),transforms.Normalize((0.1307, ), (0.3081, ))])</span><br><span class="line"><span class="string">''</span><span class="string">' transforms.compose()是一个类，主要主要作用是串联多个图片的操作，compose（）类会将transforms列表里面的transform操作进行遍历，上行代码[]里面有两个对图片的操作</span></span><br><span class="line"><span class="string">    transforms.Totensor 将下载下来的图片（PILimage）转化成tensor ,W×H×C➡C×W×H,[0,256]➡[0,1]</span></span><br><span class="line"><span class="string">    transforms.Normize 进行数据的归一化  前一个数字是mean，后一个是std 是经验值</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">train_dataset = datasets.MNIST(root=<span class="string">'../dataset/mnist/'</span>,train=True,download=True,transform=transform)</span><br><span class="line">train_loader = DataLoader(train_dataset,shuffle=True,batch_size=batch_size)</span><br><span class="line">test_dataset = datasets.MNIST(root=<span class="string">'../dataset/mnist/'</span>,train=False,download=True,transform=transform)</span><br><span class="line">test_loader = DataLoader(test_dataset,shuffle=False,batch_size=batch_size)</span><br><span class="line"><span class="comment">#因为这里使用的是torhvision的datasets 里面的MNIST数据集， 使用可以直接这样Dataloader  而不是像之前的那样先构建Dataset再做Dataloader</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#part2: design model</span></span><br><span class="line">class Net(torch.nn.Module):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        super(Net, self).__init__()</span><br><span class="line">        self.conv1 = torch.nn.Conv2d(1, 10, kernel_size=5)  <span class="comment">#Torch.nn.Linear(in_feature,out_feature,bias)</span></span><br><span class="line">        self.conv2 = torch.nn.Conv2d(10, 20, kernel_size=5)</span><br><span class="line">        self.pooling = torch.nn.MaxPool2d(2)</span><br><span class="line">        self.fc = torch.nn.Linear(320,10)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def forward(self, x):</span><br><span class="line">        batch_size = x.size(0)</span><br><span class="line">        x = F.relu(self.pooling(self.conv1(x)))</span><br><span class="line">        x = F.relu(self.pooling(self.conv2(x)))</span><br><span class="line">        x = x.view(batch_size, -1)</span><br><span class="line">        x = self.fc(x)</span><br><span class="line">        <span class="built_in">return</span> x</span><br><span class="line"><span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">      x.view(a，b)是对数据进行形变 转化为a行，b列，这里如果由一个数是-1，表示 的是让电脑帮我们算这个a或者b是多少，而不是-1行，列的意思</span></span><br><span class="line"><span class="string">      view形变后返回的数据和传入的tensor一样，只是形状不同；view()返回的tensor和传入的tensor共享内存，意思就是修改其中一个，数据都会变；</span></span><br><span class="line"><span class="string">      例如：</span></span><br><span class="line"><span class="string">         x.view(4,5).shape       #输出为(4,5)</span></span><br><span class="line"><span class="string">         x.view(-1,5).shape      #输出为(4,5)</span></span><br><span class="line"><span class="string">         x.view(4,-1).shape      #输出为(4,5)</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line">model = Net()</span><br><span class="line"></span><br><span class="line"><span class="comment">#part3: construct loss and optimizer</span></span><br><span class="line">criterion = torch.nn.CrossEntropyLoss(size_average=False)   <span class="comment">#这里的CrossEntropyLOSS不仅由Crossentropy还有还有输出层后面应该加的激活</span></span><br><span class="line">optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.5)</span><br><span class="line"></span><br><span class="line"><span class="comment">#part4: training cycle</span></span><br><span class="line"></span><br><span class="line">def train(epoch):</span><br><span class="line">    running_loss = 0.0</span><br><span class="line">    <span class="keyword">for</span> batch_idx, data <span class="keyword">in</span> enumerate(train_loader, 0):</span><br><span class="line"></span><br><span class="line">        inputs, target = data</span><br><span class="line">        optimizer.zero_grad()</span><br><span class="line"></span><br><span class="line">        outputs = model(inputs)</span><br><span class="line">        loss = criterion(outputs , target)</span><br><span class="line"></span><br><span class="line">        loss.backward()</span><br><span class="line">        optimizer.step()</span><br><span class="line">        running_loss += loss.item()</span><br><span class="line">        <span class="keyword">if</span> batch_idx % 300 ==299:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">'[%d, %5d] loss: %.3f'</span> % (epoch + 1, batch_idx + 1, running_loss / 2000))</span><br><span class="line">            running_loss = 0.0</span><br><span class="line"></span><br><span class="line">def <span class="built_in">test</span>():</span><br><span class="line">    correct = 0  <span class="comment">#用来计算正确了多少</span></span><br><span class="line">    total = 0   <span class="comment">#计算总数的多少</span></span><br><span class="line">    with torch.no_grad():     <span class="comment">#在这个with里面是不算梯度的</span></span><br><span class="line">        <span class="keyword">for</span> data <span class="keyword">in</span> test_loader:</span><br><span class="line">            inputs, target = data</span><br><span class="line">            outputs = model(inputs)   <span class="comment">#这个输出是一个矩阵一行里面有十个概率使用我们要取出最大的那个概率的下标</span></span><br><span class="line">            _, predicted = torch.max (outputs.data, dim = 1)</span><br><span class="line">            <span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">                output = torch.max(input, dim)  </span></span><br><span class="line"><span class="string">                其中input是输入的有一个tensor ，dim是max函数引索的维度 有0/1 ，其0表示每列的最大值，1表示每行的最大值</span></span><br><span class="line"><span class="string">                max函数返回值有两个tensor ，第一个是最大值，第二个是这个最大值的下标是多少</span></span><br><span class="line"><span class="string">                    </span></span><br><span class="line"><span class="string">            '</span><span class="string">''</span></span><br><span class="line">            total += target.size(0)</span><br><span class="line"></span><br><span class="line">            <span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">                labels.size(0)  labels是N×1的的矩阵 所以它的size就是一个元组（N,1）其中size（0）表示拿出第一个元素N，所以就是labels的总数 </span></span><br><span class="line"><span class="string">            '</span><span class="string">''</span></span><br><span class="line">            correct += (predicted == target).sum().item()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'Accuracy on test set: %d %% [%d/%d]'</span> % (100 * correct / total, correct, total))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(10):</span><br><span class="line">        train(epoch)</span><br><span class="line">        <span class="built_in">test</span>()</span><br></pre></td></tr></table></figure>
+          <h4 id="Handwriting-recognition"><a href="#Handwriting-recognition" class="headerlink" title="Handwriting recognition"></a>Handwriting recognition</h4><p>这是在学习使用pytorch以torchvision的MNNIST数据集进行的手写体数字识别，主要目的是记录一些函数的使用方法。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/29/ML-handwriting-recognition/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -471,7 +524,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-08 21:12:53" itemprop="dateModified" datetime="2020-07-08T21:12:53+08:00">2020-07-08</time>
+                <time title="修改时间：2020-07-29 15:56:00" itemprop="dateModified" datetime="2020-07-29T15:56:00+08:00">2020-07-29</time>
               </span>
 
           
@@ -486,113 +539,15 @@
 
       
           <p>第一次接触计算成像，记录自己的学习过程。</p>
-<h2 id="几篇论文"><a href="#几篇论文" class="headerlink" title="几篇论文"></a>几篇论文</h2><p>这里主要是读了老师发来的一些论文，阅读了之后，记录下论文的大致内容。</p>
-<h4 id="计算成像基础知识"><a href="#计算成像基础知识" class="headerlink" title="计算成像基础知识"></a>计算成像基础知识</h4><p>真实世界的视觉光信息是复杂的高维度连续的信号；而现有的数字成像方式是低维耦合离散采集，且在成像的各个维度——空间分辨率、时间分辨率、视角及深度、颜色（光谱）等均已达到瓶颈，所以计算成像应运而生。相比于传统的成像先采集后处理，计算成像在信号相关理论基础上有机结合采集与后处理，实现高维度视觉光信息的耦合采集与重构重建。</p>
-<p>在计算成像中通常用七位全光函数f(x, y, z, θ, ϕ, λ, t) 对光线进行描述: 在时刻 t 从三维空间任意位置 (x, y, z), 沿着方向 (θ, ϕ), 观察到的频率为 λ、强度为 |f(x, y, z, θ, ϕ, λ, t)| 的光线。</p>
-<p>但是传统的成像是不能捕捉到光的这么多的高维信息的，而计算摄影学从两方面加强。<br>第一计算摄影学一方面设计子空间优化耦合采集，实现高维连续光信号在成像系统有限带宽下的合理分布。第二从传感器采集得到低维耦合信号进行对应的高维高分辨率信息的计算重构。（用我的话说就是：一方面在拍摄的时候合理的设计，舍去不要的高维信息加强需要的高维信息，使得成像更好；另一方面就是因为低维信息是好捕捉的，所以努力让低维信息能够更好的表达高维信息）</p>
-<p>下图主要是在不同光信号维度的成像方法。<br><img src="/images/pasted-0.png" alt="upload successful"></p>
-<h6 id="空间维度"><a href="#空间维度" class="headerlink" title="空间维度"></a>空间维度</h6><p>空间维度x，y，z的采样决定了观测的尺度与分辨率， 主要运用在<label style="color:red">三维重建，深度测量，对地观测，天文观测</label>等领域，但是经典的成像系统都是将xyz投影到xy平面上，影响了集合信息的采集，计算成像旨在解决这个问题。</p>
-<p>相机是采集光与场景相互作用后的结果，因此为了使得更多的场景本质信息能够承载于光信号上，主要运用两种方法：第一基于变化光照系统（就是控制光源的光的时间，频谱，强度等东西吧），主要使用球形光台样式；第二是基于数字光处理器（DLP）的结构光系统，通过控制DLP的输入信号实现光照的控制。</p>
-<h6 id="角度维度"><a href="#角度维度" class="headerlink" title="角度维度"></a>角度维度</h6><p>角度信息是场景光照，材质，几何等重要特征载体，以采样不同入射角度的光线信号（传统的成像系统是完全丢失角度信息的?），实现在<label style="color:red">重光照，材质获取与建模，重聚焦（☆），光照显示</label>等运用。</p>
-<p>采集角度信息是通过光场相机采集的，1）通过微透镜阵列光线按照不同角度映射到不同的传感器像素上, 以牺牲一部分空间分辨率来换取角度分辨率<br> 2）基于光圈编码以及掩膜方式实现光场获取。光圈编码是将视角微元化，基于视角复用采集等，掩膜思路则是将高维度光场信息转换到传感器的低维频域空间，进而计算解调。掩膜法灵活、空间分辨率高，但光通量降低导致能量小。</p>
-<h6 id="时间维度"><a href="#时间维度" class="headerlink" title="时间维度"></a>时间维度</h6><p>时间尺度的不同研究的内容也就不相同。</p>
-<p>光速无限指的是场景的运动速度与光速不可比拟时，光在场景中处于稳态分布。主要研究普通相机如何对高速场景的采集。主要从两方面来改进:1)普通相机下的高速场景瞬时捕捉，也就是动态去模糊，不改变相机的帧而是对采集到的模糊照片进行计算重构，从而得到清晰的图片。2）普通相机下的高速场景的连续捕捉，通常多机联合采集突破相机的帧数局限，实现高速运动的连续捕获。</p>
-<p>光速有限指的是场景的运动速度可以与光速相比，此时光在场景中传输是随着时间的变化而变化的暂态分布。“飞秒技术”</p>
-<h6 id="光谱维度"><a href="#光谱维度" class="headerlink" title="光谱维度"></a>光谱维度</h6><p>应用于材质鉴别、皮肤 检测、视频分割、光源识别等诸多问题</p>
-<h4 id="计算成像技术及运用"><a href="#计算成像技术及运用" class="headerlink" title="计算成像技术及运用"></a>计算成像技术及运用</h4><p>这篇文章先介绍了计算成像中一些常见的数学问题，然后主要介绍了散射介质成像，偏正成像，仿生光学成像，三维成像及计算成像光学系统设计等典型的计算成像技术。</p>
-<h5 id="计算成像中常见的问题"><a href="#计算成像中常见的问题" class="headerlink" title="计算成像中常见的问题"></a>计算成像中常见的问题</h5><p>还没写呢</p>
-<h5 id="透过散射介质成像"><a href="#透过散射介质成像" class="headerlink" title="透过散射介质成像"></a>透过散射介质成像</h5><p>当光线经过雨雾，烟尘，生物组织，浑浊液体等散射介质的时候，其中一部分光会偏离原来的传播方向向其它方向散开，从而产生散射现象。介质对光的散射作用不仅会改变光的传播方向，而且会改变光的强度，相干性，偏振等特性，早期主要讲散射光视为成像噪音进行消除的，但是随着入射深度的增加，入射光都会散射，<br>弹道光逐渐衰减从而成像的弹道光非常的微弱。使用之前的方法不在适用了。所以现在主要通过透过散射介质成像成为光学问题的研究重点。</p>
-<p>散射介质成像主要方法有<label style="color:red">波前整形和基于光学记忆效应的散射介质成像技术。</label></p>
-<p>  <label style="color:red">波前整形技术的发展。</label><br>  07年提出波前调制技术（WMT）该技术通过反馈算法控制空间光调制器（SLM）对入射波前进行补偿，结合光学相位共轭（OPC）的思想实现散射介质聚焦及成像。➡12年利用波前整形技术（WST）通实验证明<label style="color:red">散射介质能够作为动态波片及光谱滤波器</label>➡同年用(WST)将ZnO粉末介质层变为有效的偏振片。之后为了解决（WST）的反馈时间长，抗噪性差等问题，主要围绕算法设计，模型优化和硬件更新来进行更新。</p>
-<p>  算法设计方面：11年提出了一种基于并行测量的调制算法提升了聚焦效率➡12年提出通过遗传算法实现了聚焦,同时证明了在低信噪比环境下, 采用遗传算法具有更好的聚焦效果。</p>
-<p>  模型优化方面：11年提出一种二值光场幅度调控方法➡由于基于反馈调制算法的模型需要多次测量，若更换聚焦位置，则需要重新调制鉴于此08年有人提出了一种基于OPC的散射成像模型，通过单次全息记录出射光场信息，实现了透过散射介质成像。➡10年对原有的OPC技术进行了年改进,利用SLM 直接计算共轭相位,从而避免使用全息板,他们将其命 名为 数 字 光 学 相 位 共 轭 (DOPC)。➡ 同年提出了另一种基于 WMT 的模型,称为传输矩阵(TM)测量方法。➡11年利用断层相位显微镜测量散射介质的频域传输矩阵，进一步推动了频域的图像重建技术。➡13年利用角谱的思想提出了另一种TM方法。➡为缩短TM测量时间，15年将压缩感知的思想与TM测量结合，可减少测量难度。➡15年提出了一种基于测量多光谱TM(MSTM)的方法，即测量不同波长下的TM，解决宽光谱聚焦的问题。➡在此基础上利用MSTM的方法实现了控制超短脉冲激光透过散射介质后的空-时聚焦。</p>
-<p>  硬件设备的更新：更高刷新频率的光场调控器的问世，数字微镜设备数字微镜设备(DMD)的刷新频率的提高,基于微机电系统(MEMS)的 SLM 的刷新频率的提高。 为了进一步优化 WST的成像效率,科研人员将电路控制思想加入 WST 中以加速测量过程中的数据传输,从而进一步提高整体调制速度。17年将基于 MEMS的 SLM 与现场可编程门阵列 (FPGA)技术相结合,最终实现了４kHz左右的调制速度。➡17年,Yu将 DMD与FPGA 相结合,首次实现了增强因子超过10^5的超强重聚焦。</p>
-<p>  对于成像而言目前基于WST的成像方式主要包括直接相位调制，冲聚焦扫描及散斑重建。</p>
-<p>  除了上述的介绍外，还考虑了散射介质其它物理性质实现散射成像的方法。  下面介绍<label style="color:red">基于光学记忆效应的散射介质成像技术发展。</label> 1988年提出的光学记忆效应（OME）说了当光波的入射角度发生细微的变化时，相机接收到的散斑分布并不会随着入射角度的改变而发生明显的改变，仅会产生一个与扫描方向对应的整体位移。➡同年Freund等人证明了使用OME实现相关成像的证明，从此拉开了散斑相关技术（SCT）的研究序幕。➡12年提出了扫描散斑相关（SBSC）成像方法。利用入射光对观测目标在 OME 范围内进行角扫描,获得不同 角度下具有相关性的散斑图样,并结合相位恢复算法(PRA)实现了观测目标的重建。➡14年在此基础上提出了一种基于单帧散斑自相关(SSC)的非侵入式成像方 法。。。。</p>
-<h5 id="偏振成像技术"><a href="#偏振成像技术" class="headerlink" title="偏振成像技术"></a>偏振成像技术</h5><p>  <label style="color:red">偏振透雾霾技术</label><br>  下图是雾霾条件下的物理退化模型，可以看到在雾霾条件下探测器接受到的光强主要包括两部分：１)场景中目标的反射光(直接透射光),包含了场景中的目标信 息;２)环境光经雾霾颗粒散射形成的杂散光(大气光),其中杂散光是造成图像退化的主要原因。<br><img src="/images/pasted-1.png" alt="upload successful"></p>
-<p>目标的反射光L在经过雾霾区域到达探测器的传输过程中,会受到雾霾颗粒的散射和吸收作用, 使得到达探测器的光强D随传输距离呈指数衰减。与此相反,大气光是由雾霾颗粒直接散射太阳光造成的,到达探测器的大气光光强 A 随着传输距离呈指数增加。探测器接收到的总光强I是直接透射光强和大气光强两部分的非相干叠加。未经衰减的目标反射光强为 </p>
-<p><img src="/images/pasted-2.png" alt="upload successful"><br>式中:A∞ 为无穷远处大气光强.由 式可以看出,通过对大气光强和无穷远处大气光强进行估算, 即可反演出经雾霾衰减前的目标反射光强,达到“去 雾”的目的。</p>
-<p>01年提出了偏振去雾技术是在相机镜头前面安装一线偏振片，在旋转线偏振片的过程中，由于大气光的部分偏正特性图像会出现明暗变化的情况，其中对I∥最亮和I⊥最暗分别采集，提出了正交差分的偏振成像去雾技术➡。。。。一大堆的偏振去雾技术</p>
-<p><label style="color:red">水下偏振技术</label>的发展：与人眼不同，水下生物可以感知偏振技术，并使用改信清晰成像，偏振差分便是其中典型代表之一。圆偏振记忆效应”表明圆偏振光在浑浊介质中 传播时其保偏能力较线偏振光更强。所以相较于线偏振光相比，在浑浊的水体中使用圆偏振理论上可以更好的成像。</p>
-<h5 id="三维成像技术"><a href="#三维成像技术" class="headerlink" title="三维成像技术"></a>三维成像技术</h5><p>自然界的信息通常都是三维形式存在的，但是传统的成像系统在信息获取与采集的过程中将三维的场景记录为二维图像，丢失了深度维的信息。</p>
-<p>目前的三维成像方法主要有<label style="color:red">基于几个光学的双目立体视觉、结构光三维成像、基于相位成像的全息三维成像、偏振三维成等</p>
-<p>双目三维成像重构技术</label>：82年提出了完善的视觉计算理论，通过连哥哥不同视角拍摄图像产生具有深度信息的三维图像，为双目立体视觉技术奠定了基础。<label style="color:red"> 像获取、图像预处理、相机标定、特征检测、特征匹配、三维重建显示六个方面</label>，运用在虚拟展示、机器人导航、军事侦查探测、医学诊断等方面。原理图如下：<br><img src="/images/pasted-3.png" alt="upload successful"><br>其中Ol、Or 分别为左、右相机的光心,P 为目标位置，Pl、Pr 为目标点在左右图像平面内对应的点。基于双目视觉的三维重建实质是利用三角几何关系还原图像平面中相关点的三维坐标。</p>
-<p>基于结构光的三维成像技术：就是用过光源投射结构光到待测物体表面，然后相机捕获待测物体表明反射的结构光图像，由于待测物体表面是有形状的，所以反射的结构光会发生相应的改变，最终从改形变量中提取出待测物体表面的三维信息。其优点如下：1）速度快，精度高是一种全场的测量方法。2）可以测量动态的物体。3）成本较低，主要器件只有结构光源和相机。</p>
-<p><img src="/images/pasted-4.png" alt="upload successful"></p>
-<p>全息三维成像技术：全息三维成像技术是利用干涉和衍射的原理来记录并再现物体真实三维图像的技术。全息即“全部信息”,是指用投影的方法记录并且再现被拍物体发出的光的全部信息，能再现光场完整的振幅和相位信息。静态的全息三维技术已经比较成熟，但是正本较高，运用范围仍然有限。目前主要是是利用数字全息和计算全息技术进行动态的三维显示。数字全息术是利用光电传感器记录全息图,随后通过计算机模拟光学衍射过程来实现被记录物体数字再现像的过程。计算全息术将物光波的复振幅由计算机编码成为计算全息图 (CGH）后输入空间光调制器（SLM）进行光学的再现显示。CGH 不仅能够记录实际物体发出光波的振幅和相位,还能模拟实际不存在的物体的波前,具有独特优势。</p>
-<p>偏振三维重构技术：当光从物体表面反射（投射）时遵守循菲涅耳定律，特定偏振态的入射光经过物体表面反射后，物体表面偏振光携带物体表面法相量信息，原理如下：</p>
-<p><img src="/images/pasted-5.png" alt="upload successful"><br>根据物体表面反射光偏振特性与微面元法向量之间的关系,利用特定偏振态入射光照明目标,计算各像素点偏振信息便可反演目标三维形貌.</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/20/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Zzlw">
-      <meta itemprop="description" content="被上天选中，成为一事无成的小朋友">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="吃吃锅巴">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/20/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-20 20:36:59" itemprop="dateCreated datePublished" datetime="2020-06-20T20:36:59+08:00">2020-06-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+<h2 id="几篇论文"><a href="#几篇论文" class="headerlink" title="几篇论文"></a>几篇论文</h2><p>这里主要是读了老师发来的一些论文，阅读了之后，记录下论文的大致内容。<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/29/computational-image-learn/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
