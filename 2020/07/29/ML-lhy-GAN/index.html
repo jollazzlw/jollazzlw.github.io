@@ -21,12 +21,12 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Conditional Generation by GAN   之前的介绍的GAN是随机输入一个vector然后生成对应的图片，但是这样是不能控制输出是什么样子的图片的。而conditional GAN便可以完成这项任务，例如输入一个“train”就输出一张火车的image。这样看传统的Traditional supervised approach 也是可以完成的，">
+  <meta name="description" content="Conditional Generation by GAN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ML_lhy_GAN">
 <meta property="og:url" content="http://yoursite.com/2020/07/29/ML-lhy-GAN/index.html">
 <meta property="og:site_name" content="吃锅巴">
-<meta property="og:description" content="Conditional Generation by GAN   之前的介绍的GAN是随机输入一个vector然后生成对应的图片，但是这样是不能控制输出是什么样子的图片的。而conditional GAN便可以完成这项任务，例如输入一个“train”就输出一张火车的image。这样看传统的Traditional supervised approach 也是可以完成的，">
+<meta property="og:description" content="Conditional Generation by GAN">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/pasted-25.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-26.png">
@@ -40,7 +40,7 @@
 <meta property="og:image" content="http://yoursite.com/images/pasted-23.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-24.png">
 <meta property="article:published_time" content="2020-07-29T05:46:00.000Z">
-<meta property="article:modified_time" content="2020-07-31T06:04:14.571Z">
+<meta property="article:modified_time" content="2020-07-31T06:09:11.183Z">
 <meta property="article:author" content="Zzlw">
 <meta property="article:tag" content="Machine Learning">
 <meta name="twitter:card" content="summary">
@@ -204,7 +204,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-31 14:04:14" itemprop="dateModified" datetime="2020-07-31T14:04:14+08:00">2020-07-31</time>
+                <time title="修改时间：2020-07-31 14:09:11" itemprop="dateModified" datetime="2020-07-31T14:09:11+08:00">2020-07-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,10 +227,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h5 id="Conditional-Generation-by-GAN"><a href="#Conditional-Generation-by-GAN" class="headerlink" title="Conditional Generation by GAN"></a>Conditional Generation by GAN</h5><p><img src="/images/pasted-25.png" alt="upload successful"></p>
+        <h5 id="Conditional-Generation-by-GAN"><a href="#Conditional-Generation-by-GAN" class="headerlink" title="Conditional Generation by GAN"></a>Conditional Generation by GAN</h5> <a id="more"></a>
+<p><img src="/images/pasted-25.png" alt="upload successful"></p>
 <p><img src="/images/pasted-26.png" alt="upload successful"></p>
 <p><img src="/images/pasted-27.png" alt="upload successful"></p>
-<p>之前的介绍的GAN是随机输入一个vector然后生成对应的图片，但是这样是不能控制输出是什么样子的图片的。而conditional GAN便可以完成这项任务，例如输入一个“train”就输出一张火车的image。<br>这样看传统的Traditional supervised approach 也是可以完成的，<br> <a id="more"></a>但是实际上完成的效果是不行的。</p>
+<p>之前的介绍的GAN是随机输入一个vector然后生成对应的图片，但是这样是不能控制输出是什么样子的图片的。而conditional GAN便可以完成这项任务，例如输入一个“train”就输出一张火车的image。<br>这样看传统的Traditional supervised approach 也是可以完成的，<br>但是实际上完成的效果是不行的。</p>
 <p><img src="/images/pasted-15.png" alt="upload successful"><br>在数据集中“train”对应的图片有是火车头，有是火车的侧面等情况。所以在上面这张图中，当输入“train”输出可能是火车头（好），火车侧面（好）也可能是火车头+火车侧面的模糊的照片（不好）。所以说使用Traditional supervised approach生成的图片都是模糊（这图片是多种image 的平均），因此这里应该使用到GAN的技术。</p>
 <p><img src="/images/pasted-16.png" alt="upload successful"><br>G待变generator ，D代表discriminator<br>相较于普通的GAN这里的G除了输入D产生的Z，还有描述的test c再输出image。D同样相较于普通的GAN这里的输出除了有G产生的图片x还有描述的test c，而输出的scalar 的数值大小的规则也改变了不仅有x是不是真实的还加上了x与c是否匹配一项因素。<br>例如上图,只有当输入”train”与”真实的”火车图片时scalar值大，当“train”与G输出的图片时值小，当文字（cat）和图片（train）不匹配时值也是小。<br><img src="/images/pasted-19.png" alt="upload successful"><br>在discriminator的架构上设计方法主要有上面两种，主要看见的架构是上面这种情况，但是老师认为下面的架构是比较有道理的。因为下面的架构会输出两个分数，一个告诉x是不是realistic，一个告诉x与c是不是match的，这样就能知道我们生成的图片错在哪里了，而上面的架构不能告诉这些信息。</p>
 <p>这是模型的演算法<br><img src="/images/pasted-18.png" alt="upload successful"></p>
@@ -337,7 +338,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
