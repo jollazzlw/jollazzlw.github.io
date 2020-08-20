@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="主要记录安装anaconda+pytorch环境+notebook的过程，以及在这过程中出现的问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装anaconda+notebook">
+<meta property="og:url" content="http://yoursite.com/2020/08/20/%E5%AE%89%E8%A3%85anaconda-notebo/index.html">
+<meta property="og:site_name" content="吃吃锅巴吧">
+<meta property="og:description" content="主要记录安装anaconda+pytorch环境+notebook的过程，以及在这过程中出现的问题。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/pasted-28.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-30.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-31.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-32.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-33.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-34.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-35.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-36.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-37.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-38.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-39.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-40.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-41.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-42.png">
+<meta property="article:published_time" content="2020-08-20T07:36:19.000Z">
+<meta property="article:modified_time" content="2020-08-20T09:11:59.235Z">
+<meta property="article:author" content="Zzlw">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-28.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/08/20/%E5%AE%89%E8%A3%85anaconda-notebo/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>安装anaconda+notebook | 吃吃锅巴吧</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">吃吃锅巴吧</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/20/%E5%AE%89%E8%A3%85anaconda-notebo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zzlw">
+      <meta itemprop="description" content="一些琐碎的东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吃吃锅巴吧">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安装anaconda+notebook
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-08-20 15:36:19 / 修改时间：17:11:59" itemprop="dateCreated datePublished" datetime="2020-08-20T15:36:19+08:00">2020-08-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>主要记录安装anaconda+pytorch环境+notebook的过程，以及在这过程中出现的问题。</p>
+<a id="more"></a>
+<h4 id="anaconda的安装"><a href="#anaconda的安装" class="headerlink" title="anaconda的安装"></a>anaconda的安装</h4><p>首先直接进入anaconda的官网 <a href="https://www.anaconda.com/" target="_blank" rel="noopener">https://www.anaconda.com/</a> ，点击products下的individual Edition，选择Download 然后选择对应系统的版本。<br><img src="/images/pasted-28.png" alt="upload successful"><br>下载完成后都是傻瓜式安装，狂点下一步就好了。<br>值得注意的是在下面一张图中将第一个也要勾起来（也就是两个都勾），这样就直接将anaconda添加到环境变量里面了，省的我们自己再添加了。</p>
+<p><img src="/images/pasted-30.png" alt="upload successful"></p>
+<p>安装完成在菜单栏会出现多个快捷方式。<br><img src="/images/pasted-31.png" alt="upload successful"><br>主要用第一个Anaconda Prompt(anaconda)进行创建、删除、进入虚拟环境，打开notebook，安装各种包等操作。而第三个Anaconda Navigator(anaconda)应该就是图形化操作界面？(目前还没怎么使用)。</p>
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>在这里输入python，就进入python的编译器了，可以看到安装anaconda的时候以及给我们安装好了python使用不需要自己另外安装了，输入exit()推出python编译器。</p>
+<p><img src="/images/pasted-33.png" alt="upload successful"></p>
+<h4 id="创建pytorch环境-notebook"><a href="#创建pytorch环境-notebook" class="headerlink" title="创建pytorch环境+notebook"></a>创建pytorch环境+notebook</h4><h6 id="首先输入创建虚拟环境命令"><a href="#首先输入创建虚拟环境命令" class="headerlink" title="首先输入创建虚拟环境命令"></a>首先输入创建虚拟环境命令</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ conda create --name pytorch_env python=3.6 anaconda   <span class="comment"># pytorch_env是我们给虚拟环境的命名 ， 其中最后一项anaconda是建立虚拟环境时，会同时安装例如Notebook、Numpy、Scipy、Matplotlib、Pandas等数据分析包，用户也可以不加，选择后续安装</span></span><br></pre></td></tr></table></figure>
+<h6 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ activate pytorch_env</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-34.png" alt="upload successful"><br>这样我们就进入到我们的自己创建的虚拟环境中了，以后我们主要在这里进行包的安装等操作。</p>
+<h6 id="安装pytorch"><a href="#安装pytorch" class="headerlink" title="安装pytorch"></a>安装pytorch</h6><p>首先到官网<a href="https://pytorch.org/" target="_blank" rel="noopener">https://pytorch.org/</a> ，根据环境选择对应的版本（<label style="color:red">这里要选择python3.6的，应该是要对应我们安装虚拟环境时候的python版本，如果不一样后面应该会出错</label>，我没有GPU所以选择None，有GPU的选择安装GPU的版本），然后复制下面的命令到命令行中即可。</p>
+<p><img src="/images/pasted-35.png" alt="upload successful"><br>在命令行输入python，进入python编译器然后输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br></pre></td></tr></table></figure>
+<p>如果如下图则表示安装成功</p>
+<p><img src="/images/pasted-36.png" alt="upload successful"></p>
+<h6 id="出现过的问题"><a href="#出现过的问题" class="headerlink" title="出现过的问题"></a>出现过的问题</h6><p>但是我在第一次安装的时候出现过问题。</p>
+<p><img src="/images/pasted-37.png" alt="upload successful"><br>意思是没有安装这个Visual C++啥的，只要点击It can be download at …后面那个然后进行安装。需要重启电脑后再输入从pytorch官网复制来的命令进行安装pytorch即可。<br>ok<del>~</del>这样pytorch也安装完成了。</p>
+<h6 id="在虚拟环境中安装notebook"><a href="#在虚拟环境中安装notebook" class="headerlink" title="在虚拟环境中安装notebook"></a>在虚拟环境中安装notebook</h6><p>notebook其实安装anaconda的时候就以及安装好了，但是那个notebook我不知道怎么使用创建好的虚拟环境（害，其实不知道怎么加载pytorch）<br>输入命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install nb_conda</span><br></pre></td></tr></table></figure>
+<p>出现然后在命令行输入jupyter notebook，如下图，就可以在浏览器输入<a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a> 打开jupyter notebook了。</p>
+<p><img src="/images/pasted-38.png" alt="upload successful"></p>
+<h6 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h6><p>出现了要输入密码的情况</p>
+<p><img src="/images/pasted-39.png" alt="upload successful"><br>只需要将红线中的复制过去即可。</p>
+<p><img src="/images/pasted-40.png" alt="upload successful"><br>🆗这样就可以使用notebook啦<del>~</del></p>
+<h6 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h6><p><img src="/images/pasted-41.png" alt="upload successful"><br>可以看到在notebook 中点击new的时候出现了我们自己创建的带有pytorch的虚拟环境（如果直接打开安装anaconda时自带的notebook只要第一个python 3 的），点击它然后输入下图中的命令，然后运行，若出现对应情况则表示安装成功。</p>
+<p><img src="/images/pasted-42.png" alt="upload successful"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/04/opencv-%E7%9A%84%E9%9B%B6%E9%9B%B6%E6%95%A3%E6%95%A3/" rel="prev" title="opencv 的零零散散">
+      <i class="fa fa-chevron-left"></i> opencv 的零零散散
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#anaconda的安装"><span class="nav-number">1.</span> <span class="nav-text">anaconda的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建pytorch环境-notebook"><span class="nav-number">2.</span> <span class="nav-text">创建pytorch环境+notebook</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#首先输入创建虚拟环境命令"><span class="nav-number">2.0.1.</span> <span class="nav-text">首先输入创建虚拟环境命令</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#激活虚拟环境"><span class="nav-number">2.0.2.</span> <span class="nav-text">激活虚拟环境</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#安装pytorch"><span class="nav-number">2.0.3.</span> <span class="nav-text">安装pytorch</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#出现过的问题"><span class="nav-number">2.0.4.</span> <span class="nav-text">出现过的问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在虚拟环境中安装notebook"><span class="nav-number">2.0.5.</span> <span class="nav-text">在虚拟环境中安装notebook</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#问题"><span class="nav-number">2.0.6.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#完成"><span class="nav-number">2.0.7.</span> <span class="nav-text">完成</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zzlw"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Zzlw</p>
+  <div class="site-description" itemprop="description">一些琐碎的东西</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zzlw</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
