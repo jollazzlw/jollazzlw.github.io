@@ -158,6 +158,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/%E6%9C%88%E6%8A%A5-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zzlw">
+      <meta itemprop="description" content="一些琐碎的东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吃吃锅巴吧">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/19/%E6%9C%88%E6%8A%A5-1/" class="post-title-link" itemprop="url">月报-1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-19 19:26:31 / 修改时间：20:19:22" itemprop="dateCreated datePublished" datetime="2020-09-19T19:26:31+08:00">2020-09-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>关于一个月中每个星期学了什么的，有什么想法的记录。可以说是周报吧。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/19/%E6%9C%88%E6%8A%A5-1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/10/Python%E7%9A%84%E9%9B%B6%E9%9B%B6%E6%95%A3%E6%95%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -181,10 +247,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-10 15:23:48 / 修改时间：16:23:27" itemprop="dateCreated datePublished" datetime="2020-09-10T15:23:48+08:00">2020-09-10</time>
+              <time title="创建时间：2020-09-10 15:23:48" itemprop="dateCreated datePublished" datetime="2020-09-10T15:23:48+08:00">2020-09-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-19 19:27:59" itemprop="dateModified" datetime="2020-09-19T19:27:59+08:00">2020-09-19</time>
+              </span>
 
           
 
@@ -198,29 +270,14 @@
 
       
           <p>记录下在python中见到的一些不知道什么意思的东西。</p>
-<p>①<br>def strStr(self, haystack: str, needle: str) -&gt; int:<br>…<br>return a<br>函数标注通常用于 类型提示：以上函数预期接受两个str参数并预期返回一个 int 值。</p>
-<p>②pop()：移除序列中的一个元素（默认最后一个元素），并且返回该元素的值。<br>移除list的元素，若元素序号超出list则会报错</p>
-<p>.pop(),在()内为空时默认移除最后一个元素</p>
-<p>list_1 = [1, 2, 3, 4, 5]</p>
-<p>a = list_1.pop()</p>
-<p>print (list_1, a)</p>
-<p>–&gt;[1, 2, 3, 4] 5</p>
-<p>pop(元素序号)移除list中的某一个元素</p>
-<p>list_1 = [1, 2, 3, 4, 5]</p>
-<p>a = list_1.pop(2)</p>
-<p>print (list_1, a)</p>
-<p>–&gt;[1, 2, 4, 5] 3</p>
-<p>移除dict中的元素(只能移除1个元素)：pop()，()内不能为空，要有key；若key不在dict内，需要主动给出需要返回的数据，否则报错；</p>
-<p>如果key在dict_1内</p>
-<p>dict_1 = {1:’a’, 2:’b’, 3:’c’, 4:’d’, 5:’e’}</p>
-<p>a = dict_1.pop(2)</p>
-<p>print(dict_1,   a)</p>
-<p>–&gt;{1:’a’, 3:’c’, 4:’d’, 5:’e’}  b<br>如果key不在dict_1内：返回pop给定的数据（下面的[1,2,3,4]），一定要给定否则会报错</p>
-<p>dict_1 = {1:’a’, 2:’b’, 3:’c’, 4:’d’, 5:’e’}</p>
-<p>a = dict_1.pop(6,  [1, 2, 3, 4])</p>
-<p>print(dict_1,   a)</p>
-<p>–&gt;{1:’a’, 2:’b’, 3:’c’, 4:’d’, 5:’e’}  [1, 2, 3, 4]<br>③</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/10/Python%E7%9A%84%E9%9B%B6%E9%9B%B6%E6%95%A3%E6%95%A3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -917,7 +974,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
