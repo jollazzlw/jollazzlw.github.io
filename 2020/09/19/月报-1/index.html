@@ -28,10 +28,12 @@
 <meta property="og:site_name" content="吃吃锅巴吧">
 <meta property="og:description" content="关于一个月中每个星期学了什么的，有什么想法的记录。可以说是周报吧。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/pasted-43.png">
 <meta property="article:published_time" content="2020-09-19T11:26:31.000Z">
-<meta property="article:modified_time" content="2020-09-27T13:00:00.764Z">
+<meta property="article:modified_time" content="2020-10-01T02:16:36.275Z">
 <meta property="article:author" content="Zzlw">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-43.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/09/19/%E6%9C%88%E6%8A%A5-1/">
 
@@ -191,7 +193,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-27 21:00:00" itemprop="dateModified" datetime="2020-09-27T21:00:00+08:00">2020-09-27</time>
+                <time title="修改时间：2020-10-01 10:16:36" itemprop="dateModified" datetime="2020-10-01T10:16:36+08:00">2020-10-01</time>
               </span>
 
           
@@ -209,6 +211,8 @@
 <a id="more"></a>
 <h5 id="第一个星期"><a href="#第一个星期" class="headerlink" title="第一个星期"></a>第一个星期</h5><p>开学的第一周的记录<br>因为是第一次写周报，可能写的方向或者说这周学的方向不正确，希望通过记录的方式让自己会议<br>这周确立了研究的方向是关于无透镜，FPM的显微成像的。<br>所以主要去了解了下这两个技术的大致原理。找了几了综述看了看。<br>①<br>泛读了下 无透镜片上显微成像技术：理论、发展与应用。<br>了解到无透镜成像主要是将待观察物体放在sensor上，依靠待观察物体（基于散射或者荧光）产生衍射图像，从而在sensor上面可以得到记录。但是关于怎么产生物体的散射和荧光没有接触过，是直接使用光源照射物体，就可以产生对应的衍射图像？<br>对这篇文章我感觉还需要阅读几遍，现在回忆起来里面重点提到的数字全息成像已经不怎么记得了。<br>②<br>泛读Deep Learning for Image Super-resolution:A Survey<br>在这篇论文中全面概述了具有深度学习的图像超分辨率的最新进展，从SR问题的定义，数据集 ，性能度量，然后再从监督学习、无监督学习、特定运用领域的SR研究进行介绍。<br>主要看了下监督学习下一般网络的搭建主要分为四种：<br>在CNN前面、后面进行下采样，CNN+上采用+下采样还有一种Progressive upsampling SR  是在反复CNN+下采样的组合。</p>
 <h4 id="第二星期"><a href="#第二星期" class="headerlink" title="第二星期"></a>第二星期</h4><p>第二周，周报<br>这周主线也是观看了一点文献，其中令我印象深刻的是基于LED的无透镜全息成像技术，从中我知道了无透镜数字全息成像技术的大致原理。<br>数字全息技术成像法分为两个步骤：记录与再现。<br>记录是通过物光与参考光发生干涉从而在成像器件上干涉全息图。<br>在全息再现时，根据光的衍射理论，照明光波经过全息图的衍射实现物光波的重建。所以再现的本质就是衍射。而数字全息，不用实际光照射全息图，而是通过数字模拟的方法。（意识是，只是用到了衍射的理论？）<br>这样最终得到物光波的复振幅信息，这样就得到一般成像技术的强度信息（即像分布？），以及一般成像没有的相位信息，通过相位信息可以很好的清晰现实物体的轮廓信息以及厚度信息，因为不同物体，或者同一物体不同位置的折射率不同光通过时产生相位差。</p>
+<h4 id="第三个星期"><a href="#第三个星期" class="headerlink" title="第三个星期"></a>第三个星期</h4><p>上周，老师在回复的邮件中问了我无透镜成像恢复得到的复振幅U(x,y)=A(x,y)exp(jΦ)，相位Φ表征的是什么信息。<br>所以这周的开始，我主要去了解了这个相位。<br>由于细胞大多是透明的，所以光在通过细胞及其环境的时候光的振幅变化很小即A(x,y)很小，所以不能和好的反映物体的轮廓信息。<br>但是由于细胞和环境的折射率是不同的，所以光在通过的时候产生的相位差也是不同的。细胞的这种相位信息和细胞的大小，形态和结构都是有关的。下面的图很好的反映了，光在不同厚度的细胞中，相位的变化情况。</p>
+<p><img src="/images/pasted-43.png" alt="upload successful"></p>
 
     </div>
 
@@ -286,7 +290,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一个星期"><span class="nav-number">1.</span> <span class="nav-text">第一个星期</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二星期"><span class="nav-number"></span> <span class="nav-text">第二星期</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一个星期"><span class="nav-number">1.</span> <span class="nav-text">第一个星期</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二星期"><span class="nav-number"></span> <span class="nav-text">第二星期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三个星期"><span class="nav-number"></span> <span class="nav-text">第三个星期</span></a></div>
       </div>
       <!--/noindex-->
 
