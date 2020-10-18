@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="主要记录Java的基础语法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA基本语法">
+<meta property="og:url" content="http://yoursite.com/2020/10/18/JAVA%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="吃吃锅巴吧">
+<meta property="og:description" content="主要记录Java的基础语法">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-18T13:20:00.000Z">
+<meta property="article:modified_time" content="2020-10-18T13:23:58.678Z">
+<meta property="article:author" content="Zzlw">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/10/18/JAVA%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JAVA基本语法 | 吃吃锅巴吧</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">吃吃锅巴吧</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/18/JAVA%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zzlw">
+      <meta itemprop="description" content="一些琐碎的东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吃吃锅巴吧">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JAVA基本语法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-18 21:20:00 / 修改时间：21:23:58" itemprop="dateCreated datePublished" datetime="2020-10-18T21:20:00+08:00">2020-10-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>主要记录Java的基础语法</p>
+<a id="more"></a>
+<h5 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h5><p>1、java程序分为编写——编译——运行三个过程<br> 编写：用java语言写的程序，即源文件<br> 编译：使用”javac 源文件名.java“ 将源文件编译成字节码文件<br> 运行：使用”java 类名“进行解析运行字节码文件<br>2、在java源文件中可以声明多个类目，但是只有一个public 属性的class，且这个class的名字应该和源文件名字一样。<br>3、程序的入口是main()方法，且格式固定。<br>4、编译过程：编译以后会生成一个或多个字节码文件，字节码文件的文件名和java源文件中的类名一致，所以有几个类就会生成几个字节码文件。但是要运行的话只有包含main()方法的字节码文件才能运行，所以如果那个要运行那个类就要加入main()方法。<br>JDK = JRE + Java的开发工具(javac.exe , java.exe , javadoc.exe….)<br>JRE = JVM + Java核心类库</p>
+<h5 id="第二天"><a href="#第二天" class="headerlink" title="第二天"></a>第二天</h5><h6 id="java命名规范"><a href="#java命名规范" class="headerlink" title="java命名规范"></a>java命名规范</h6><p>包名：多单词组成时，所有字母小写 xxxyyyzzz<br>类名、接口名：多单词组成时，所有单词首字母大写（驼峰式）XxxYyyZzz<br>变量名、方法名：多单词组成时，第一个单词全部小写，第二个单词开始首字母大写（小驼峰式）xxxYyyZzz<br>常量名：所有字母大写 XXXYYYZZZ<br>java定义的数据类型<br>一、变量按数据类来分⭐⭐⭐变量定义了一定要赋值，不会自动赋值0的。如果不赋值可能会报错<br>        基本数据类型：<br>            整形：byte / short / int / long（long型常量后面加上l/L不加为 int型）    ⭐整形常量默认为 int型<br>            浮点型： float / doule   （float型常量末尾需加上 f/F，所以java默认用double型，又大，精度又好）⭐浮点型常量默认double型<br>            字符型： char      用’’ 框起来，在运算的时候是转化为对应码的。<br>            布尔型： boolean</p>
+<pre><code>引用数据类型：
+        类（class）   String 在这里面   String （用“”框起来的） 可以和8种数据类型做运算 用   + ，表示相连接。  ⭐注意char用+做运算就是加（将char的字符转化为对应的码数再和其他数相连接），不是连接。
+        接口（interface）
+        数组（array）</code></pre><h6 id="二、-基本数据类型（7种数据类型，不包括Boolean）之间的运算规则"><a href="#二、-基本数据类型（7种数据类型，不包括Boolean）之间的运算规则" class="headerlink" title="二、 基本数据类型（7种数据类型，不包括Boolean）之间的运算规则"></a>二、 基本数据类型（7种数据类型，不包括Boolean）之间的运算规则</h6><pre><code>1、自动类型提升：
+    结论：当内存容量小的数据类型和内存容量大的数据类型进行运算时，其结果自动转换为内存容量大的数据类型
+    byte 、 char 、short --&gt;int --&gt; long --&gt;float --&gt;double
+   ⭐ 特别的: 当byte 、 char 、 short 三种类型进行运算时, 结果最小也只能用int型接收
+         例如    byte  a = 1； a = a+2；这是错误的
+2、强制类型转换: 自动类型提升的逆过程
+    格式:   新变量名 = (类型名int, float...)    变量名;</code></pre><h6 id="三、Java-种的进制"><a href="#三、Java-种的进制" class="headerlink" title="三、Java 种的进制"></a>三、Java 种的进制</h6><pre><code>二进制(binary)：0,1 ，满2进1.以0b或0B开头。
+十进制(decimal)：0-9 ，满10进1。
+八进制(octal)：0-7 ，满8进1. 以数字0开头表示。 
+
+十六进制(hex)：0-9及A-F，满16进1. 以0x或0X开头表示。此处的A-F不区分大小写。 如：0x21AF +1= 0X21B0</code></pre><h5 id="第三天"><a href="#第三天" class="headerlink" title="第三天"></a>第三天</h5><h6 id="一、运算符"><a href="#一、运算符" class="headerlink" title="一、运算符"></a>一、运算符</h6><p>   ①<br>    模运算，结果的正负主要和被取模数一样<br>   ②<br>    ++/–运算和其它运算一起出现时：<br>    前++/–，先自生改变再进行其它运算<br>    后++/–，先其它运算再改变自生的值<br>    例如：int i = 10; i = i +(i++) + (++i)   //i = 10+10+12这里的i++也是先赋值后加加<br>   ③<br>     i += 1 这种运算是不改变i的类型 如果i是short型，则还是short型<br>    和i = i+1 相比是有区别的，这里的i 如果是short型，则已经变成了int型了<br>    ④<br>    逻辑运算符    &amp;，&amp;&amp;，| , || , ! , ^     逻辑与，短路与，逻辑或，短路或，非，异或<br>    关于逻辑与和短路与的相同点：<br>    相同点：两者的运算结果是相同的<br>    不同点：逻辑与要考虑两边的情况，两边都运算完成。短路与是先考虑左边，如果左边已经能判定结果了，则右边就不运算了。<br>    例如： boolean   a = false；int b = 10;<br>                if (a &amp;&amp; (b++&gt;0))  {}    // 在这种情况下，a为false 则，&amp;&amp;结果一定是false 则右边就直接跳过了，使用b还是等于10<br>    开发中推荐使用短路与/或<br>    ⑤位运算符<br>    在一定范围内：左移相当于乘二，右移相当于除二<br>    为什么要说一定范围呢，因为物极必反，比如向左移动时，当移到最高位为1时，值就变成负的了。</p>
+<pre><code>⑥三元运算符和if-else都可以用的时候用三元运算符好点
+⑦比较运算符的输出结果为Boolean类型的，所以是不能连续使用的。例如：80&lt; score &lt;100是不行的。
+比较运算符里面的 == ，！= 不仅可以用在数值类型数据之间，还可以运用在引用数据类型之间（如String），其它比如 &gt; &lt; 等只能用在数值类型数据之间。</code></pre><h5 id="第四天"><a href="#第四天" class="headerlink" title="第四天"></a>第四天</h5><h6 id="一、if-else-结构的使用"><a href="#一、if-else-结构的使用" class="headerlink" title="一、if -else 结构的使用"></a>一、if -else 结构的使用</h6><p>①⭐当一个条件表达式成立，则进去执行相应的语句，后面即使又符合条件的语句也就不会再执行了  例如： if (score &gt;90){执行语句1;}else (score&gt;80){执行语句2;}，当score为91的时候，只会执行执行语句1,永远不会执行执行语句2。<br>所以得出以下几点：</p>
+<blockquote>
+<p>如果多个条件表达式为互斥关系（没有交集），哪个判断语句和执行语句声明在上面和下面没关系<br>如果多个条件语句为交集的关系，需要根据实际情况，考虑清楚哪个结构在上，哪个在下（上面的例如中的情况）<br>如果多个条件语句为包换关系，通常情况下将范围小的声明在范围大的上面，这样范围小的才有机会执行。</p>
+</blockquote>
+<h6 id="二、在-a-b-区间内随机产生一个数"><a href="#二、在-a-b-区间内随机产生一个数" class="headerlink" title="二、在[a, b]区间内随机产生一个数"></a>二、在[a, b]区间内随机产生一个数</h6><pre><code>公式[a, b]：(int)(Math.random()*(b -a + 1)+a)</code></pre><h6 id="三、switch-case-的使用"><a href="#三、switch-case-的使用" class="headerlink" title="三、switch-case  的使用"></a>三、switch-case  的使用</h6><p>①⭐根据switch表达式中的值，依次匹配各个case 中的常量。一旦匹配成功，则进入到相应的case结构中，调用其执行的语句。当调用完执行语句以后，则仍然向下执行其它case结构中的语句，直到遇见break关键字或者switch-casem末尾结束为止。<br>所以每个case结构中一般（是一般情况，有时候不加反而更方便，如下）加上break。</p>
+<p>这样可以通过不写break，防止代码冗余。<br>所以说break在switch-case是可选的不是必须加的<br>②switch结构中的表达式， 只能有如下6中数据类型之一：byte ，short，char，int ，枚举类型，String类型。<br>③case之后只能是常量，不能是范围。例如：switch(age){case age&gt;18:}这样是不行的，不然就和if-else很像了呀。所以switch-case一般应用在比较少的情况下。<br>④每个case后的执行语句中如果有定义变量，则这些变量是不能重名的。下图是错误师范：<br>这样是不行的噢！！！！<br>四、if-else 和switch-case 使用情况说明<br>1、凡是可以switch-case都可以用if-else ，反之则不然<br>2、在写分支时，如果可以使用switc-case（并且switch中表达式的取值情况不多的时候），又可以使用if-else ，优先选择使用switch-case，原因：switch-case执行效率稍高</p>
+<h5 id="第五天"><a href="#第五天" class="headerlink" title="第五天"></a>第五天</h5><h6 id="一、循环的四要素"><a href="#一、循环的四要素" class="headerlink" title="一、循环的四要素"></a>一、循环的四要素</h6><p>①初始化条件，②循环条件（Boolean类型），③循环体，④迭代条件。<br>for（①；②；④）{③}<br>①while（②）{③；④}说明：别丢了迭代条件，避免死循环。<br>执行过程：① - ② - ③ - ④ - ② - ③ - ④ ………②<br>for循环和while循环可以相互转换<br>唯一的区别：   for循环和while循环的初始化条件部分的作用范围不同，for循环的初始化只在for循环内有用。<br>do-while 循环结构<br>①do{③；④}while(②)<br>执行过程：① - ③ - ④ - ② - ③ - ④  …….②<br>do-while()  是一定会执行一次的循环体的！！！<br>在开发中使用for  ，while() 结构多一些</p>
+<h6 id="二、一些小知识⭐⭐⭐"><a href="#二、一些小知识⭐⭐⭐" class="headerlink" title="二、一些小知识⭐⭐⭐"></a>二、一些小知识⭐⭐⭐</h6><p>①不在循环部分限制次数的结构：for(;;)或while(true)<br>②结束循环的两种方式<br>    方式一：循环条件部分返回false<br>    方式二：在循环体中，执行break</p>
+<h6 id="三、break-默认跳出包裹此关键字最近的一层循环。"><a href="#三、break-默认跳出包裹此关键字最近的一层循环。" class="headerlink" title="三、break 默认跳出包裹此关键字最近的一层循环。"></a>三、break 默认跳出包裹此关键字最近的一层循环。</h6><pre><code>continue ，也是
+ break可以用在循环和switch-case，continue 只能用在在循环中</code></pre><p>⭐也可以跳出指定循环，只要再循环前面加上标签，然后再break或者continue后面加上标签，这样就结束/跳过指定标识的循环了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/19/%E6%9C%88%E6%8A%A5-1/" rel="prev" title="周报记录">
+      <i class="fa fa-chevron-left"></i> 周报记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/10/18/JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="next" title="JAVA面向对象上">
+      JAVA面向对象上 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一天"><span class="nav-number">1.</span> <span class="nav-text">第一天</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二天"><span class="nav-number">2.</span> <span class="nav-text">第二天</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#java命名规范"><span class="nav-number">2.1.</span> <span class="nav-text">java命名规范</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#二、-基本数据类型（7种数据类型，不包括Boolean）之间的运算规则"><span class="nav-number">2.2.</span> <span class="nav-text">二、 基本数据类型（7种数据类型，不包括Boolean）之间的运算规则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#三、Java-种的进制"><span class="nav-number">2.3.</span> <span class="nav-text">三、Java 种的进制</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第三天"><span class="nav-number">3.</span> <span class="nav-text">第三天</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一、运算符"><span class="nav-number">3.1.</span> <span class="nav-text">一、运算符</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第四天"><span class="nav-number">4.</span> <span class="nav-text">第四天</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一、if-else-结构的使用"><span class="nav-number">4.1.</span> <span class="nav-text">一、if -else 结构的使用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#二、在-a-b-区间内随机产生一个数"><span class="nav-number">4.2.</span> <span class="nav-text">二、在[a, b]区间内随机产生一个数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#三、switch-case-的使用"><span class="nav-number">4.3.</span> <span class="nav-text">三、switch-case  的使用</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第五天"><span class="nav-number">5.</span> <span class="nav-text">第五天</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一、循环的四要素"><span class="nav-number">5.1.</span> <span class="nav-text">一、循环的四要素</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#二、一些小知识⭐⭐⭐"><span class="nav-number">5.2.</span> <span class="nav-text">二、一些小知识⭐⭐⭐</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#三、break-默认跳出包裹此关键字最近的一层循环。"><span class="nav-number">5.3.</span> <span class="nav-text">三、break 默认跳出包裹此关键字最近的一层循环。</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zzlw"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Zzlw</p>
+  <div class="site-description" itemprop="description">一些琐碎的东西</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zzlw</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

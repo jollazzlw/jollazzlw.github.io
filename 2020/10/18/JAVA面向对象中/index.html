@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="类的特征之二继承性1.为什么要有类的继承性？(继承性的好处）  ① 减少了代码的冗余，提高了代码的复用性 ② 便于功能的扩展 ③ 为之后多态性的使用，提供了前提图示：2.继承性的格式：class A extends B{} A:子类、派生类、subclass B:父类、超类、基类、superclass  3.子类继承父类以后有哪些不同？3.1体现：一旦子类A继承父类B以后，子类A中就获取了父类B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA面向对象中">
+<meta property="og:url" content="http://yoursite.com/2020/10/18/JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD/index.html">
+<meta property="og:site_name" content="吃吃锅巴吧">
+<meta property="og:description" content="类的特征之二继承性1.为什么要有类的继承性？(继承性的好处）  ① 减少了代码的冗余，提高了代码的复用性 ② 便于功能的扩展 ③ 为之后多态性的使用，提供了前提图示：2.继承性的格式：class A extends B{} A:子类、派生类、subclass B:父类、超类、基类、superclass  3.子类继承父类以后有哪些不同？3.1体现：一旦子类A继承父类B以后，子类A中就获取了父类B">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/pasted-60.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-61.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-62.png">
+<meta property="article:published_time" content="2020-10-18T14:15:00.000Z">
+<meta property="article:modified_time" content="2020-10-18T14:29:46.975Z">
+<meta property="article:author" content="Zzlw">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-60.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/10/18/JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JAVA面向对象中 | 吃吃锅巴吧</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">吃吃锅巴吧</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/18/JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zzlw">
+      <meta itemprop="description" content="一些琐碎的东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吃吃锅巴吧">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JAVA面向对象中
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-18 22:15:00 / 修改时间：22:29:46" itemprop="dateCreated datePublished" datetime="2020-10-18T22:15:00+08:00">2020-10-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <a id="more"></a>
+<h4 id="类的特征之二继承性"><a href="#类的特征之二继承性" class="headerlink" title="类的特征之二继承性"></a>类的特征之二继承性</h4><p>1.为什么要有类的继承性？(继承性的好处）</p>
+<ul>
+<li>① 减少了代码的冗余，提高了代码的复用性</li>
+<li>② 便于功能的扩展</li>
+<li>③ 为之后多态性的使用，提供了前提<br>图示：<br><img src="/images/pasted-60.png" alt="upload successful"><br>2.继承性的格式：<br>class A extends B{}</li>
+<li>A:子类、派生类、subclass</li>
+<li>B:父类、超类、基类、superclass</li>
+</ul>
+<p>3.子类继承父类以后有哪些不同？<br>3.1体现：一旦子类A继承父类B以后，子类A中就获取了父类B中声明的所有的属性和方法。</p>
+<ul>
+<li>特别的，父类中声明为private的属性或方法，子类继承父类以后，仍然认为获取了父类中私的结构。只因为封装性的影响，使得子类不能直接调用父类的结构而已。<br>3.2 子类继承父类以后，还可以声明自己特有的属性或方法：实现功能的拓展。</li>
+<li>子类和父类的关系，不同于子集和集合的关系。</li>
+<li>extends：延展、扩展</li>
+</ul>
+<p>4.Java中继承性的说明<br>1.一个类可以被多个子类继承。<br>2.Java中类的单继承性：一个类只能有一个父类<br>3.子父类是相对的概念。<br>4.子类直接继承的父类，称为：直接父类。间接继承的父类称为：间接父类<br>5.子类继承父类以后，就获取了直接父类以及所间接父类中声明的属性和方法</p>
+<p>图示：</p>
+<p><img src="/images/pasted-61.png" alt="upload successful"></p>
+<p>5.java.lang.Object类的理解</p>
+<ol>
+<li><p>如果我们没显式的声明一个类的父类的话，则此类继承于java.lang.Object类</p>
+</li>
+<li><p>所的java类（除java.lang.Object类之外都直接或间接的继承于java.lang.Object类</p>
+</li>
+<li><p>意味着，所的java类具有java.lang.Object类声明的功能。</p>
+<h4 id="方法的重写"><a href="#方法的重写" class="headerlink" title="方法的重写"></a>方法的重写</h4></li>
+<li><p>什么是方法的重写(override 或 overwrite)？<br>子类继承父类以后，可以对父类中同名同参数的方法，进行覆盖操作.</p>
+</li>
+<li><p>应用：<br>重写以后，当创建子类对象以后，通过子类对象调用子父类中的同名同参数的方法时，实际执行的是子类重写父类的方法。</p>
+</li>
+<li><p>举例：<br>class Circle{<br>public double findArea(){}//求面积<br>}<br>class Cylinder extends Circle{<br>public double findArea(){}//求表面积<br>}</p>
+</li>
+</ol>
+<hr>
+<p>class Account{<br>public boolean withdraw(double amt){}<br>}<br>class CheckAccount extends Account{<br>public boolean withdraw(double amt){}<br>}</p>
+<p>4.重写的规则：<br>    方法的声明： 权限修饰符  返回值类型  方法名(形参列表) throws 异常的类型{</p>
+<ul>
+<li>//方法体</li>
+<li>}</li>
+<li>约定俗称：子类中的叫重写的方法，父类中的叫被重写的方法</li>
+<li>① 子类重写的方法的方法名和形参列表与父类被重写的方法的方法名和形参列表相同</li>
+<li>② 子类重写的方法的权限修饰符不小于父类被重写的方法的权限修饰符</li>
+<li><blockquote>
+<p>特殊情况：子类不能重写父类中声明为private权限的方法</p>
+</blockquote>
+</li>
+<li>③ 返回值类型：</li>
+<li><blockquote>
+<p>父类被重写的方法的返回值类型是void，则子类重写的方法的返回值类型只能是void</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>父类被重写的方法的返回值类型是A类型，则子类重写的方法的返回值类型可以是A类或A类的子类</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>父类被重写的方法的返回值类型是基本数据类型(比如：double)，则子类重写的方法的返回值类型必须是相同的基本数据类型(必须也是double)</p>
+</blockquote>
+</li>
+<li>④ 子类重写的方法抛出的异常类型不大于父类被重写的方法抛出的异常类型（具体放到异常处理时候讲）</li>
+</ul>
+<hr>
+<ul>
+<li>子类和父类中的同名同参数的方法要么都声明为非static的（考虑重写，要么都声明为static的（不是重写)。    </li>
+</ul>
+<p>5.面试题：<br>区分方法的重写和重载？<br>答：<br>① 二者的概念：<br>② 重载和重写的具体规则<br>③ 重载：不表现为多态性。<br>  重写：表现为多态性。<br>重载，是指允许存在多个同名方法，而这些方法的参数不同。编译器根据方法不同的参数表，对同名方法的名称做修饰。对于编译器而言，这些同名方法就成了不同的方法。它们的调用地址在编译期就绑定了。Java的重载是可以包括父类和子类的，即子类可以重载父类的同名不同参数的方法。<br>所以：对于重载而言，在方法调用之前，编译器就已经确定了所要调用的方法，这称为“早绑定”或“静态绑定”；</p>
+<p>而对于多态，只等到方法调用的那一刻，解释运行器才会确定所要调用的具体方法，这称为“晚绑定”或“动态绑定”。 </p>
+<p>引用一句Bruce Eckel的话：“不要犯傻，如果它不是晚绑定，它就不是多态。”</p>
+<h4 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h4><h5 id="1-super-关键字可以理解为：父类的"><a href="#1-super-关键字可以理解为：父类的" class="headerlink" title="1.super 关键字可以理解为：父类的"></a>1.super 关键字可以理解为：父类的</h5><h5 id="2-可以用来调用的结构："><a href="#2-可以用来调用的结构：" class="headerlink" title="2.可以用来调用的结构："></a>2.可以用来调用的结构：</h5><p>属性、方法、构造器</p>
+<h5 id="3-super调用属性、方法："><a href="#3-super调用属性、方法：" class="headerlink" title="3.super调用属性、方法："></a>3.super调用属性、方法：</h5><p>3.1 我们可以在子类的方法或构造器中。通过使用”super.属性”或”super.方法”的方式，显式的调用父类中声明的属性或方法。但是，通常情况下，我们习惯省略”super.”<br>3.2 特殊情况：当子类和父类中定义了同名的属性时，我们要想在子类中调用父类中声明的属性，则必须显式的使用”super.属性”的方式，表明调用的是父类中声明的属性。<br>3.3 特殊情况：当子类重写了父类中的方法以后，我们想在子类的方法中调用父类中被重写的方法时，则必须显式的使用”super.方法”的方式，表明调用的是父类中被重写的方法。</p>
+<h5 id="4-super调用构造器："><a href="#4-super调用构造器：" class="headerlink" title="4.super调用构造器："></a>4.super调用构造器：</h5><p>4.1  我们可以在子类的构造器中显式的使用”super(形参列表)”的方式，调用父类中声明的指定的构造器<br>4.2 “super(形参列表)”的使用，必须声明在子类构造器的首行！<br>4.3 我们在类的构造器中，针对于”this(形参列表)”或”super(形参列表)”只能二一，不能同时出现<br>4.4 在构造器的首行，没显式的声明”this(形参列表)”或”super(形参列表)”，则默认调用的是父类中空参的构造器：super()<br>4.5 在类的多个构造器中，至少一个类的构造器中使用了”super(形参列表)”，调用父类中的构造器</p>
+<h4 id="面向对象的特征之三多态性"><a href="#面向对象的特征之三多态性" class="headerlink" title="面向对象的特征之三多态性"></a>面向对象的特征之三多态性</h4><p>1.多态性的理解：可以理解为一个事物的多种形态。<br>2.何为多态性：<br>对象的多态性：父类的引用指向子类的对象（或子类的对象赋给父类的引用）<br>举例：<br>Person p = new Man();<br>Object obj = new Date();<br>3.多态性的使用：虚拟方法调用</p>
+<blockquote>
+<p>有了对象的多态性以后，我们在编译期，只能调用父类中声明的方法，但在运行期，我们实际执行的是子类重写父类的方法。<br>总结：编译，看左边；运行，看右边。<br>4.多态性的使用前提：<br>① 类的继承关系  ② 方法的重写<br>5.多态性的应用举例：<br>举例一：<br>    public void func(Animal animal){//Animal animal = new Dog();<br>        animal.eat();<br>        animal.shout();<br>    }<br>举例二：<br>public void method(Object obj){</p>
+</blockquote>
+<pre><code>}</code></pre><p>举例三：<br>class Driver{</p>
+<pre><code>public void doData(Connection conn){//conn = new MySQlConnection(); / conn = new OracleConnection();
+    //规范的步骤去操作数据</code></pre><p>//        conn.method1();<br>//        conn.method2();<br>//        conn.method3();</p>
+<pre><code>}</code></pre><p>}</p>
+<p>6.多态性使用的注意点：<br>对象的多态性，只适用于方法，不适用于属性（编译和运行都看左边）</p>
+<hr>
+<p>7.关于向上转型与向下转型：<br>7.1 向上转型：多态<br>7.2 向下转型：<br>7.2.1 为什么使用向下转型：<br>有了对象的多态性以后，内存中实际上是加载了子类特有的属性和方法的，但是由于变量声明为父类类型，导致编译时，只能调用父类中声明的属性和方法。子类特有的属性和方法不能调用。如何才能调用子类特的属性和方法？使用向下转型。<br>7.2.2 如何实现向下转型：<br>使用强制类型转换符：()<br>7.2.3 使用时的注意点：<br>① 使用强转时，可能出现ClassCastException的异常。<br>② 为了避免在向下转型时出现ClassCastException的异常，我们在向下转型之前，先进行instanceof的判断，一旦返回true，就进行向下转型。如果返回false，不进行向下转型。<br>7.2.4 instanceof的使用：<br>① a instanceof A:判断对象a是否是类A的实例。如果是，返回true；如果不是，返回false。<br>② 如果 a instanceof A返回true,则 a instanceof B也返回true.其中，类B是类A的父类。<br>③ 要求a所属的类与类A必须是子类和父类的关系，否则编译错误。<br>7.2.5 图示：</p>
+<p><img src="/images/pasted-62.png" alt="upload successful"><br>8. 面试题：<br>8.1 谈谈你对多态性的理解？<br>① 实现代码的通用性。<br>② Object类中定义的public boolean equals(Object obj){  }<br>  JDBC:使用java程序操作(获取数据库连接、CRUD)数据库(MySQL、Oracle、DB2、SQL Server)<br>③ 抽象类、接口的使用肯定体现了多态性。（抽象类、接口不能实例化）<br>8.2 多态是编译时行为还是运行时行为？</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/18/JAVA%E6%95%B0%E7%BB%84/" rel="prev" title="JAVA数组">
+      <i class="fa fa-chevron-left"></i> JAVA数组
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#类的特征之二继承性"><span class="nav-number">1.</span> <span class="nav-text">类的特征之二继承性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法的重写"><span class="nav-number">2.</span> <span class="nav-text">方法的重写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#super关键字"><span class="nav-number">3.</span> <span class="nav-text">super关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-super-关键字可以理解为：父类的"><span class="nav-number">3.1.</span> <span class="nav-text">1.super 关键字可以理解为：父类的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-可以用来调用的结构："><span class="nav-number">3.2.</span> <span class="nav-text">2.可以用来调用的结构：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-super调用属性、方法："><span class="nav-number">3.3.</span> <span class="nav-text">3.super调用属性、方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-super调用构造器："><span class="nav-number">3.4.</span> <span class="nav-text">4.super调用构造器：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面向对象的特征之三多态性"><span class="nav-number">4.</span> <span class="nav-text">面向对象的特征之三多态性</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zzlw"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Zzlw</p>
+  <div class="site-description" itemprop="description">一些琐碎的东西</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zzlw</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -158,6 +158,366 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/18/JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zzlw">
+      <meta itemprop="description" content="一些琐碎的东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吃吃锅巴吧">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/18/JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD/" class="post-title-link" itemprop="url">JAVA面向对象中</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-18 22:15:00 / 修改时间：22:29:46" itemprop="dateCreated datePublished" datetime="2020-10-18T22:15:00+08:00">2020-10-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+<h4 id="类的特征之二继承性"><a href="#类的特征之二继承性" class="headerlink" title="类的特征之二继承性"></a>类的特征之二继承性</h4><p>1.为什么要有类的继承性？(继承性的好处）</p>
+<ul>
+<li>① 减少了代码的冗余，提高了代码的复用性</li>
+<li>② 便于功能的扩展</li>
+<li>③ 为之后多态性的使用，提供了前提<br>图示：<br><img src="/images/pasted-60.png" alt="upload successful"><br>2.继承性的格式：<br>class A extends B{}</li>
+<li>A:子类、派生类、subclass</li>
+<li>B:父类、超类、基类、superclass</li>
+</ul>
+<p>3.子类继承父类以后有哪些不同？<br>3.1体现：一旦子类A继承父类B以后，子类A中就获取了父类B中声明的所有的属性和方法。</p>
+<ul>
+<li>特别的，父类中声明为private的属性或方法，子类继承父类以后，仍然认为获取了父类中私的结构。只因为封装性的影响，使得子类不能直接调用父类的结构而已。<br>3.2 子类继承父类以后，还可以声明自己特有的属性或方法：实现功能的拓展。</li>
+<li>子类和父类的关系，不同于子集和集合的关系。</li>
+<li>extends：延展、扩展</li>
+</ul>
+<p>4.Java中继承性的说明<br>1.一个类可以被多个子类继承。<br>2.Java中类的单继承性：一个类只能有一个父类<br>3.子父类是相对的概念。<br>4.子类直接继承的父类，称为：直接父类。间接继承的父类称为：间接父类<br>5.子类继承父类以后，就获取了直接父类以及所间接父类中声明的属性和方法</p>
+<p>图示：</p>
+<p><img src="/images/pasted-61.png" alt="upload successful"></p>
+<p>5.java.lang.Object类的理解</p>
+<ol>
+<li><p>如果我们没显式的声明一个类的父类的话，则此类继承于java.lang.Object类</p>
+</li>
+<li><p>所的java类（除java.lang.Object类之外都直接或间接的继承于java.lang.Object类</p>
+</li>
+<li><p>意味着，所的java类具有java.lang.Object类声明的功能。</p>
+<h4 id="方法的重写"><a href="#方法的重写" class="headerlink" title="方法的重写"></a>方法的重写</h4></li>
+<li><p>什么是方法的重写(override 或 overwrite)？<br>子类继承父类以后，可以对父类中同名同参数的方法，进行覆盖操作.</p>
+</li>
+<li><p>应用：<br>重写以后，当创建子类对象以后，通过子类对象调用子父类中的同名同参数的方法时，实际执行的是子类重写父类的方法。</p>
+</li>
+<li><p>举例：<br>class Circle{<br>public double findArea(){}//求面积<br>}<br>class Cylinder extends Circle{<br>public double findArea(){}//求表面积<br>}</p>
+</li>
+</ol>
+<hr>
+<p>class Account{<br>public boolean withdraw(double amt){}<br>}<br>class CheckAccount extends Account{<br>public boolean withdraw(double amt){}<br>}</p>
+<p>4.重写的规则：<br>    方法的声明： 权限修饰符  返回值类型  方法名(形参列表) throws 异常的类型{</p>
+<ul>
+<li>//方法体</li>
+<li>}</li>
+<li>约定俗称：子类中的叫重写的方法，父类中的叫被重写的方法</li>
+<li>① 子类重写的方法的方法名和形参列表与父类被重写的方法的方法名和形参列表相同</li>
+<li>② 子类重写的方法的权限修饰符不小于父类被重写的方法的权限修饰符</li>
+<li><blockquote>
+<p>特殊情况：子类不能重写父类中声明为private权限的方法</p>
+</blockquote>
+</li>
+<li>③ 返回值类型：</li>
+<li><blockquote>
+<p>父类被重写的方法的返回值类型是void，则子类重写的方法的返回值类型只能是void</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>父类被重写的方法的返回值类型是A类型，则子类重写的方法的返回值类型可以是A类或A类的子类</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>父类被重写的方法的返回值类型是基本数据类型(比如：double)，则子类重写的方法的返回值类型必须是相同的基本数据类型(必须也是double)</p>
+</blockquote>
+</li>
+<li>④ 子类重写的方法抛出的异常类型不大于父类被重写的方法抛出的异常类型（具体放到异常处理时候讲）</li>
+</ul>
+<hr>
+<ul>
+<li>子类和父类中的同名同参数的方法要么都声明为非static的（考虑重写，要么都声明为static的（不是重写)。    </li>
+</ul>
+<p>5.面试题：<br>区分方法的重写和重载？<br>答：<br>① 二者的概念：<br>② 重载和重写的具体规则<br>③ 重载：不表现为多态性。<br>  重写：表现为多态性。<br>重载，是指允许存在多个同名方法，而这些方法的参数不同。编译器根据方法不同的参数表，对同名方法的名称做修饰。对于编译器而言，这些同名方法就成了不同的方法。它们的调用地址在编译期就绑定了。Java的重载是可以包括父类和子类的，即子类可以重载父类的同名不同参数的方法。<br>所以：对于重载而言，在方法调用之前，编译器就已经确定了所要调用的方法，这称为“早绑定”或“静态绑定”；</p>
+<p>而对于多态，只等到方法调用的那一刻，解释运行器才会确定所要调用的具体方法，这称为“晚绑定”或“动态绑定”。 </p>
+<p>引用一句Bruce Eckel的话：“不要犯傻，如果它不是晚绑定，它就不是多态。”</p>
+<h4 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h4><h5 id="1-super-关键字可以理解为：父类的"><a href="#1-super-关键字可以理解为：父类的" class="headerlink" title="1.super 关键字可以理解为：父类的"></a>1.super 关键字可以理解为：父类的</h5><h5 id="2-可以用来调用的结构："><a href="#2-可以用来调用的结构：" class="headerlink" title="2.可以用来调用的结构："></a>2.可以用来调用的结构：</h5><p>属性、方法、构造器</p>
+<h5 id="3-super调用属性、方法："><a href="#3-super调用属性、方法：" class="headerlink" title="3.super调用属性、方法："></a>3.super调用属性、方法：</h5><p>3.1 我们可以在子类的方法或构造器中。通过使用”super.属性”或”super.方法”的方式，显式的调用父类中声明的属性或方法。但是，通常情况下，我们习惯省略”super.”<br>3.2 特殊情况：当子类和父类中定义了同名的属性时，我们要想在子类中调用父类中声明的属性，则必须显式的使用”super.属性”的方式，表明调用的是父类中声明的属性。<br>3.3 特殊情况：当子类重写了父类中的方法以后，我们想在子类的方法中调用父类中被重写的方法时，则必须显式的使用”super.方法”的方式，表明调用的是父类中被重写的方法。</p>
+<h5 id="4-super调用构造器："><a href="#4-super调用构造器：" class="headerlink" title="4.super调用构造器："></a>4.super调用构造器：</h5><p>4.1  我们可以在子类的构造器中显式的使用”super(形参列表)”的方式，调用父类中声明的指定的构造器<br>4.2 “super(形参列表)”的使用，必须声明在子类构造器的首行！<br>4.3 我们在类的构造器中，针对于”this(形参列表)”或”super(形参列表)”只能二一，不能同时出现<br>4.4 在构造器的首行，没显式的声明”this(形参列表)”或”super(形参列表)”，则默认调用的是父类中空参的构造器：super()<br>4.5 在类的多个构造器中，至少一个类的构造器中使用了”super(形参列表)”，调用父类中的构造器</p>
+<h4 id="面向对象的特征之三多态性"><a href="#面向对象的特征之三多态性" class="headerlink" title="面向对象的特征之三多态性"></a>面向对象的特征之三多态性</h4><p>1.多态性的理解：可以理解为一个事物的多种形态。<br>2.何为多态性：<br>对象的多态性：父类的引用指向子类的对象（或子类的对象赋给父类的引用）<br>举例：<br>Person p = new Man();<br>Object obj = new Date();<br>3.多态性的使用：虚拟方法调用</p>
+<blockquote>
+<p>有了对象的多态性以后，我们在编译期，只能调用父类中声明的方法，但在运行期，我们实际执行的是子类重写父类的方法。<br>总结：编译，看左边；运行，看右边。<br>4.多态性的使用前提：<br>① 类的继承关系  ② 方法的重写<br>5.多态性的应用举例：<br>举例一：<br>    public void func(Animal animal){//Animal animal = new Dog();<br>        animal.eat();<br>        animal.shout();<br>    }<br>举例二：<br>public void method(Object obj){</p>
+</blockquote>
+<pre><code>}</code></pre><p>举例三：<br>class Driver{</p>
+<pre><code>public void doData(Connection conn){//conn = new MySQlConnection(); / conn = new OracleConnection();
+    //规范的步骤去操作数据</code></pre><p>//        conn.method1();<br>//        conn.method2();<br>//        conn.method3();</p>
+<pre><code>}</code></pre><p>}</p>
+<p>6.多态性使用的注意点：<br>对象的多态性，只适用于方法，不适用于属性（编译和运行都看左边）</p>
+<hr>
+<p>7.关于向上转型与向下转型：<br>7.1 向上转型：多态<br>7.2 向下转型：<br>7.2.1 为什么使用向下转型：<br>有了对象的多态性以后，内存中实际上是加载了子类特有的属性和方法的，但是由于变量声明为父类类型，导致编译时，只能调用父类中声明的属性和方法。子类特有的属性和方法不能调用。如何才能调用子类特的属性和方法？使用向下转型。<br>7.2.2 如何实现向下转型：<br>使用强制类型转换符：()<br>7.2.3 使用时的注意点：<br>① 使用强转时，可能出现ClassCastException的异常。<br>② 为了避免在向下转型时出现ClassCastException的异常，我们在向下转型之前，先进行instanceof的判断，一旦返回true，就进行向下转型。如果返回false，不进行向下转型。<br>7.2.4 instanceof的使用：<br>① a instanceof A:判断对象a是否是类A的实例。如果是，返回true；如果不是，返回false。<br>② 如果 a instanceof A返回true,则 a instanceof B也返回true.其中，类B是类A的父类。<br>③ 要求a所属的类与类A必须是子类和父类的关系，否则编译错误。<br>7.2.5 图示：</p>
+<p><img src="/images/pasted-62.png" alt="upload successful"><br>8. 面试题：<br>8.1 谈谈你对多态性的理解？<br>① 实现代码的通用性。<br>② Object类中定义的public boolean equals(Object obj){  }<br>  JDBC:使用java程序操作(获取数据库连接、CRUD)数据库(MySQL、Oracle、DB2、SQL Server)<br>③ 抽象类、接口的使用肯定体现了多态性。（抽象类、接口不能实例化）<br>8.2 多态是编译时行为还是运行时行为？</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/18/JAVA%E6%95%B0%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zzlw">
+      <meta itemprop="description" content="一些琐碎的东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吃吃锅巴吧">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/18/JAVA%E6%95%B0%E7%BB%84/" class="post-title-link" itemprop="url">JAVA数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-18 22:10:00 / 修改时间：22:14:34" itemprop="dateCreated datePublished" datetime="2020-10-18T22:10:00+08:00">2020-10-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a id="more"></a>
+<p><img src="/images/pasted-56.png" alt="upload successful"><br><img src="/images/pasted-57.png" alt="upload successful"><br><img src="/images/pasted-55.png" alt="upload successful"><br><img src="/images/pasted-58.png" alt="upload successful"><br><img src="/images/pasted-59.png" alt="upload successful"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/18/JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zzlw">
+      <meta itemprop="description" content="一些琐碎的东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吃吃锅巴吧">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/18/JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">JAVA面向对象上</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-18 21:29:00 / 修改时间：21:55:05" itemprop="dateCreated datePublished" datetime="2020-10-18T21:29:00+08:00">2020-10-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="第八天-面向对象的学习"><a href="#第八天-面向对象的学习" class="headerlink" title="第八天-面向对象的学习"></a>第八天-面向对象的学习</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/18/JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/18/JAVA%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Zzlw">
+      <meta itemprop="description" content="一些琐碎的东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="吃吃锅巴吧">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/18/JAVA%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">JAVA基本语法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-18 21:20:00 / 修改时间：21:23:58" itemprop="dateCreated datePublished" datetime="2020-10-18T21:20:00+08:00">2020-10-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>主要记录Java的基础语法</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/18/JAVA%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/%E6%9C%88%E6%8A%A5-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -591,329 +951,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/23/ML%E7%9A%84%E9%9B%B6%E9%9B%B6%E7%A2%8E%E7%A2%8E/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Zzlw">
-      <meta itemprop="description" content="一些琐碎的东西">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="吃吃锅巴吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/23/ML%E7%9A%84%E9%9B%B6%E9%9B%B6%E7%A2%8E%E7%A2%8E/" class="post-title-link" itemprop="url">ML的零零碎碎函数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-23 18:42:00" itemprop="dateCreated datePublished" datetime="2020-07-23T18:42:00+08:00">2020-07-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-31 13:59:19" itemprop="dateModified" datetime="2020-07-31T13:59:19+08:00">2020-07-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一些零零碎碎的函数"><a href="#一些零零碎碎的函数" class="headerlink" title="一些零零碎碎的函数"></a>一些零零碎碎的函数</h3><p>记录一些在学习ML过程中使用到的一些函数，主要是二次记忆吧。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/23/ML%E7%9A%84%E9%9B%B6%E9%9B%B6%E7%A2%8E%E7%A2%8E/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/12/%E8%A5%BF%E7%94%B5-%E8%AE%A1%E7%AE%97%E6%88%90%E5%83%8F%E4%B8%8E%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Zzlw">
-      <meta itemprop="description" content="一些琐碎的东西">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="吃吃锅巴吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/12/%E8%A5%BF%E7%94%B5-%E8%AE%A1%E7%AE%97%E6%88%90%E5%83%8F%E4%B8%8E%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA-1/" class="post-title-link" itemprop="url">西电-计算成像与超分辨率图像重建</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-12 16:53:00" itemprop="dateCreated datePublished" datetime="2020-07-12T16:53:00+08:00">2020-07-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-31 13:58:41" itemprop="dateModified" datetime="2020-07-31T13:58:41+08:00">2020-07-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Computational-Imaging/" itemprop="url" rel="index"><span itemprop="name">Computational Imaging</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="主要内容："><a href="#主要内容：" class="headerlink" title="主要内容："></a>主要内容：</h3><p>（1）计算成像与超分辨率成像技术概述</p>
-<p>（2）Coded Exposure </p>
-<p>（3）Coded Aperture </p>
-<p>（4）压缩编码孔径与超分辨率成像</p>
-<p>（5）随机散射超分辨率成像技术</p>
-<p>（6）量子成像<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/07/12/%E8%A5%BF%E7%94%B5-%E8%AE%A1%E7%AE%97%E6%88%90%E5%83%8F%E4%B8%8E%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA-1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/ML-handwriting-recognition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Zzlw">
-      <meta itemprop="description" content="一些琐碎的东西">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="吃吃锅巴吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/29/ML-handwriting-recognition/" class="post-title-link" itemprop="url">ML-Handwriting Recognition</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-29 22:42:00" itemprop="dateCreated datePublished" datetime="2020-06-29T22:42:00+08:00">2020-06-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-31 13:48:48" itemprop="dateModified" datetime="2020-07-31T13:48:48+08:00">2020-07-31</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Handwriting-recognition"><a href="#Handwriting-recognition" class="headerlink" title="Handwriting recognition"></a>Handwriting recognition</h4><p>这是在学习使用pytorch以torchvision的MNNIST数据集进行的手写体数字识别，主要目的是记录一些函数的使用方法。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/29/ML-handwriting-recognition/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/29/computational-image-learn/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Zzlw">
-      <meta itemprop="description" content="一些琐碎的东西">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="吃吃锅巴吧">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/29/computational-image-learn/" class="post-title-link" itemprop="url">计算成像的学习记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-29 16:41:00" itemprop="dateCreated datePublished" datetime="2020-06-29T16:41:00+08:00">2020-06-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-31 13:57:09" itemprop="dateModified" datetime="2020-07-31T13:57:09+08:00">2020-07-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Computational-Imaging/" itemprop="url" rel="index"><span itemprop="name">Computational Imaging</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>第一次接触计算成像，记录自己的学习过程。</p>
-<h2 id="几篇论文"><a href="#几篇论文" class="headerlink" title="几篇论文"></a>几篇论文</h2><p>这里主要是读了老师发来的一些论文，阅读了之后，记录下论文的大致内容。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/29/computational-image-learn/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -980,20 +1022,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
