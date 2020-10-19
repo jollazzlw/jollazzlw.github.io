@@ -21,25 +21,28 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="主要内容：（1）计算成像与超分辨率成像技术概述 （2）Coded Exposure  （3）Coded Aperture  （4）压缩编码孔径与超分辨率成像 （5）随机散射超分辨率成像技术 （6）量子成像">
+  <meta name="description" content="2020.10.12—2020.10.18这周主要是阅读了一篇关于提升FPM成像质量的论文《提升傅里叶叠层显微成像质量的研究》是20年一篇中科院博士的学位论文我主要记载了作者关于以下三方面内容：FPM的成像系统光强差异的问题，成像时长时间曝光带来的噪声问题以及彩色FPM成像。 一、光强差异问题，作者从三个方面讨论了光强的减少原因。第一点，是LED出射光与出射角度有关：垂直出射时光强会高，随出射角度">
 <meta property="og:type" content="article">
-<meta property="og:title" content="西电-计算成像与超分辨率图像重建">
-<meta property="og:url" content="http://yoursite.com/2020/07/12/%E8%A5%BF%E7%94%B5-%E8%AE%A1%E7%AE%97%E6%88%90%E5%83%8F%E4%B8%8E%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA-1/index.html">
+<meta property="og:title" content="周记记录">
+<meta property="og:url" content="http://yoursite.com/2020/10/19/%E5%91%A8%E8%AE%B0%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="吃吃锅巴吧">
-<meta property="og:description" content="主要内容：（1）计算成像与超分辨率成像技术概述 （2）Coded Exposure  （3）Coded Aperture  （4）压缩编码孔径与超分辨率成像 （5）随机散射超分辨率成像技术 （6）量子成像">
+<meta property="og:description" content="2020.10.12—2020.10.18这周主要是阅读了一篇关于提升FPM成像质量的论文《提升傅里叶叠层显微成像质量的研究》是20年一篇中科院博士的学位论文我主要记载了作者关于以下三方面内容：FPM的成像系统光强差异的问题，成像时长时间曝光带来的噪声问题以及彩色FPM成像。 一、光强差异问题，作者从三个方面讨论了光强的减少原因。第一点，是LED出射光与出射角度有关：垂直出射时光强会高，随出射角度">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/images/pasted-14.png">
-<meta property="og:image" content="http://yoursite.com/images/pasted-10.png">
-<meta property="og:image" content="http://yoursite.com/images/pasted-11.png">
-<meta property="og:image" content="http://yoursite.com/images/pasted-12.png">
-<meta property="og:image" content="http://yoursite.com/images/pasted-13.png">
-<meta property="article:published_time" content="2020-07-12T08:53:00.000Z">
-<meta property="article:modified_time" content="2020-07-31T05:58:41.936Z">
+<meta property="og:image" content="http://yoursite.com/images%5Cpasted-63.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-66.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-67.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-68.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-69.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-70.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-71.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-72.png">
+<meta property="article:published_time" content="2020-10-19T04:45:00.000Z">
+<meta property="article:modified_time" content="2020-10-19T04:54:05.486Z">
 <meta property="article:author" content="Zzlw">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/pasted-14.png">
+<meta name="twitter:image" content="http://yoursite.com/images%5Cpasted-63.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/07/12/%E8%A5%BF%E7%94%B5-%E8%AE%A1%E7%AE%97%E6%88%90%E5%83%8F%E4%B8%8E%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA-1/">
+<link rel="canonical" href="http://yoursite.com/2020/10/19/%E5%91%A8%E8%AE%B0%E8%AE%B0%E5%BD%95/">
 
 
 <script id="page-configurations">
@@ -52,7 +55,7 @@
   };
 </script>
 
-  <title>西电-计算成像与超分辨率图像重建 | 吃吃锅巴吧</title>
+  <title>周记记录 | 吃吃锅巴吧</title>
   
 
 
@@ -167,7 +170,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/12/%E8%A5%BF%E7%94%B5-%E8%AE%A1%E7%AE%97%E6%88%90%E5%83%8F%E4%B8%8E%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/19/%E5%91%A8%E8%AE%B0%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -180,7 +183,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          西电-计算成像与超分辨率图像重建
+          周记记录
         </h1>
 
         <div class="post-meta">
@@ -189,23 +192,21 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-07-12 16:53:00" itemprop="dateCreated datePublished" datetime="2020-07-12T16:53:00+08:00">2020-07-12</time>
+              <time title="创建时间：2020-10-19 12:45:00 / 修改时间：12:54:05" itemprop="dateCreated datePublished" datetime="2020-10-19T12:45:00+08:00">2020-10-19</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-31 13:58:41" itemprop="dateModified" datetime="2020-07-31T13:58:41+08:00">2020-07-31</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Computational-Imaging/" itemprop="url" rel="index"><span itemprop="name">Computational Imaging</span></a>
+                  <a href="/categories/%E5%91%A8%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">周记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%91%A8%E8%AE%B0/FPM/" itemprop="url" rel="index"><span itemprop="name">FPM</span></a>
                 </span>
             </span>
 
@@ -220,20 +221,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="主要内容："><a href="#主要内容：" class="headerlink" title="主要内容："></a>主要内容：</h3><p>（1）计算成像与超分辨率成像技术概述</p>
-<p>（2）Coded Exposure </p>
-<p>（3）Coded Aperture </p>
-<p>（4）压缩编码孔径与超分辨率成像</p>
-<p>（5）随机散射超分辨率成像技术</p>
-<p>（6）量子成像<br> <a id="more"></a><br>先介绍了光电成像的一般描述，也称为图像的退化模型：<br>g（x,y）=f(x,y) * h(x,y)+n(x,y)<br>其中，f是原图，h是传递函数，n是噪声，* 是卷积<br>图像退化的主要原因：离焦，运动模糊，几何失真和噪声。</p>
-<p>图像恢复（和图像重建是同一概念）：明确图像退化的原因，建立数学模型，沿逆过程恢复图像。其实就是上面公式求h()函数的过程。<br>图像恢复需要遵守一个准则：与原图误差最小，一般用数学上的lp范数。图像恢复的难点：数学模型和噪声。</p>
-<p>超分辨率成像主要包括：<br>1）利用低分辨率图像重建成高分辨率图像；<br>2) 利用低分辨率的sensor成像高分辨率的图像；</p>
-<p>超分辨率成像涉及的abbe成像原理（即二次衍射理论）<br><img src="/images/pasted-14.png" alt="upload successful"><br>显微极限 200nm，很多做超分辨率成像就是突破200nm，有随机介质的方式突破。<br>阿贝原理提出显微镜的分辨率和光的波长，显微镜的物镜孔径的关系时。</p>
-<h5 id="计算成像和图像重建的关系"><a href="#计算成像和图像重建的关系" class="headerlink" title="计算成像和图像重建的关系"></a>计算成像和图像重建的关系</h5><p><img src="/images/pasted-10.png" alt="upload successful"></p>
-<p><img src="/images/pasted-11.png" alt="upload successful"></p>
-<h6 id="编码曝光"><a href="#编码曝光" class="headerlink" title="编码曝光"></a>编码曝光</h6><p><img src="/images/pasted-12.png" alt="upload successful"><br>这幅图是传统拍摄时运动模糊产生的原因：运动的小车卷积上曝光(快门)的时间（相当于一个盒子滤波器）得到一个模糊的图像。<br>h()的PSF（点扩散函数）是一个sinc function 函数，它与x轴有交点，这样我们在逆卷积的时候就有除零的情况从而图像恢复就会存在大量的噪声得不到正确的信号，从而去模糊的情况很难。<br>其实用信号系统就好了，输入卷积上冲击相应等于气响应。PSF就相当于脉冲响应的频域。<br>所以其中一种改进就是将与x轴的交点消除掉，这就是所谓的编码曝光。</p>
-<p><img src="/images/pasted-13.png" alt="upload successful"><br>如上图，通过编码的方式将快门的曝光时间改变，这样PSF和就没有零值，容易完成去模糊得到正确的图像。</p>
-<h6 id="编码孔径"><a href="#编码孔径" class="headerlink" title="编码孔径"></a>编码孔径</h6><p>改变镜头的孔径</p>
+        <p>2020.10.12—2020.10.18<br>这周主要是阅读了一篇关于提升FPM成像质量的论文<br>《提升傅里叶叠层显微成像质量的研究》是20年一篇中科院博士的学位论文<br>我主要记载了作者关于以下三方面内容：FPM的成像系统光强差异的问题，成像时长时间曝光带来的噪声问题以及彩色FPM成像。</p>
+<h5 id="一、光强差异问题，"><a href="#一、光强差异问题，" class="headerlink" title="一、光强差异问题，"></a>一、光强差异问题，</h5><p><img src="/images%5Cpasted-63.png" alt="upload successful"><br>作者从三个方面讨论了光强的减少原因。<br>第一点，是LED出射光与出射角度有关：垂直出射时光强会高，随出射角度与垂直方向向夹角α增大，光强逐渐减小。其光强与夹角关系为 I = I0(cosα)^5,其中I0是阵列中央LED发射出的光强（即垂直方向）。也就是说，随着角度α增大，光强按（cosα）^5的倍数减少。<br>第二点，不同空间位置的LED和样品的距离不同，即这些LED照射在样品上时，经过的路程是不同的。阵列中央LED到达样品的距离为h，则夹角为α的LED到达样品的距离为h/cosα。如下图。    </p>
+<p><img src="/images/pasted-66.png" alt="upload successful"><br>假设，LED为点光源，向外发射球面波，那么光强与传播距离平方成反比关系，因此角度α的LED与阵列中央LED相比照到样品上的光强度要小了（cosα）^2/<br>第三，假设LED为点光源发射的球面波，那么中央LED发射出的光通量最高的，角度α的LED是斜照射样品的，样品面与LED照射到样品上的光线角度不是90°，而是（90-α），那么此时样品上的光照度与中央LED垂直照射样品面的光照度相比差了cosα。</p>
+<p><img src="/images/pasted-67.png" alt="upload successful"><br>作者从三个方面考虑了光照度减少的原因，所以可以的出一个公式：<br>I = I0 (cosα)^8，角度是α的LED照射到样品的光强度，是中央LED垂直照射的光强度I0的 （cosα）^8。<br>为了解决这种边缘LED光强不足的问题，作者通过养成相对于的曝光时间，来增加光强。设中央LED垂直照射的曝光时间为T0 ，则角度为α的LED曝光时间为 T = T0/（cosα）^8。<br>这样中间的光强比较大的，曝光时间就少点，外围光强比较小的，曝光时间就长点。</p>
+<h4 id="二、噪声问题"><a href="#二、噪声问题" class="headerlink" title="二、噪声问题"></a>二、噪声问题</h4><p>作者介绍了在FPM图像的采集过成中，极易受到噪声的影响，特别是在光强较低的情况下，噪声可能淹没了图像信号，导致恢复的图像质量很差。<br>作者基于稀疏采样FPM和自适应去噪方法提出了一个新的去噪方法——稀疏采样去噪算法。<br>可以从两步来解释这个方法。<br>第一步：首先重建过程引入一个差分矩阵Di。</p>
+<p><img src="/images/pasted-68.png" alt="upload successful"><br>Di用来描述实际采集到的图像振幅Ii和估计的图像振幅Ii,estimated（上图中的，没搞到下标去显得比较长）之间的差异。<br>关于估计的图像振幅Ii,estimated 作者用全部的采集图像经过AP迭代更新数轮后恢复的。<br>作者认为当差分矩阵Di为0值附近的时候认为噪声少，随着噪声的增加差分矩阵Di的值变大。因此Di有用来搜寻图像Ii中的噪声点：与Di中绝对值大的点相对于的采集图像中的像素点，其数值与估计值较大可以认为存在噪声。<br>这样就可以找到采集采集图像的噪声。<br>第二步：使用使用像素掩模版去除噪点。这个掩模板就相当于给图像的像素信息附上不同的权重，噪声大的地方权重小，噪声小的地方权重大，这样就可以减少噪声信号的干扰。<br>所以作者提出的稀疏采样去噪算法，第一步是要差分矩阵Di找出噪声在图像上的分布情况，第二步是要像素掩模版去噪。</p>
+<h5 id="三-关于生成彩色FPM图像"><a href="#三-关于生成彩色FPM图像" class="headerlink" title="三 关于生成彩色FPM图像"></a>三 关于生成彩色FPM图像</h5><p>RGB模型是常见的彩色模型，除此之外还有CMY模型和HIS模型。<br>1、CMY模型中的三色分别是青（Cyan）,品红(Mgenta)和黄色(Yellow)。这三色颜色是光的二次色，CMY可以做RBG的互补色。两者关系如下：</p>
+<p><img src="/images/pasted-69.png" alt="upload successful"><br>2、HIS模型与上述两者不同，HIS模型是从人观察彩色物体时感官上的色调(Hue), 饱和度(Saturation), 亮度(Intensity)来描述颜色，其中色调表示一种纯色的颜色属性；饱和度表示该色调被白光稀释的程度，加入的白光越多，饱和度越低，颜色越不艳丽；亮度则是表示颜色的模型。RGB和HIS的对比关系如下：</p>
+<p><img src="/images/pasted-70.png" alt="upload successful"><br>两个模型的对应关系如下：RGB立方体中黑白连线(连线上个点表示的是灰度值)可以看作是HIS模型中的亮度值I，色调H即围绕这条线的角度方向，而饱和度S可以看作是该色调下各个颜色点与连线的距离。所以每幅RGB图像都可以转化为HIS的图像，好处就是HIS的图像其中只用H就可以表示色彩。转换公式如下：<br><img src="/images/pasted-71.png" alt="upload successful"><br>HIS彩色模型能够很好的将颜色和亮度分开，亮度值被压缩到I分量上，而FPM从过过程中正是亮度图像，因而可以将采集的低分辨率图像中的颜色(H,S)保留，而对低分辨率的图像灰度(亮度I)进行重建。过程图如下:</p>
+<p><img src="/images/pasted-72.png" alt="upload successful"><br>除了以上三点的创新之外，作者还对光源的相干性进行讨论，提出了切趾法的相干传递函数，但是对相干这东西不明白，所以没记录下来。</p>
 
     </div>
 
@@ -249,13 +246,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/06/29/ML-handwriting-recognition/" rel="prev" title="ML-Handwriting Recognition">
-      <i class="fa fa-chevron-left"></i> ML-Handwriting Recognition
+    <a href="/2020/10/18/JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD/" rel="prev" title="JAVA面向对象中">
+      <i class="fa fa-chevron-left"></i> JAVA面向对象中
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/07/23/ML%E7%9A%84%E9%9B%B6%E9%9B%B6%E7%A2%8E%E7%A2%8E/" rel="next" title="ML的零零碎碎函数">
-      ML的零零碎碎函数 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -314,7 +308,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#主要内容："><span class="nav-number">1.</span> <span class="nav-text">主要内容：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算成像和图像重建的关系"><span class="nav-number">1.0.1.</span> <span class="nav-text">计算成像和图像重建的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#编码曝光"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">编码曝光</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#编码孔径"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">编码孔径</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、光强差异问题，"><span class="nav-number">1.</span> <span class="nav-text">一、光强差异问题，</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、噪声问题"><span class="nav-number"></span> <span class="nav-text">二、噪声问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#三-关于生成彩色FPM图像"><span class="nav-number">1.</span> <span class="nav-text">三 关于生成彩色FPM图像</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
